@@ -106,17 +106,15 @@ const grid = function (winLength) {
         let winValue = p.value;
         for (var i = 0; i < 4; i++) {
             let dirPos = new pos(p.x, p.y, p.value);
-            let dirNeg = new pos(p.x, p.y, p.value);
-            let dirArr = [p];
+            let dirNeg = p.directionInvert(i);
+            let dirArr = [];
             while (getValue(dirPos) == winValue) {
-                dirPos = dirPos.direction(i);
-                dirPos.value = i;
                 dirArr.push(dirPos);
+                dirPos = dirPos.direction(i);
             }
             while (getValue(dirNeg) == winValue) {
-                dirNeg = dirNeg.directionInvert(i);
-                dirNeg.value = i+4;
                 dirArr.push(dirNeg);
+                dirNeg = dirNeg.directionInvert(i);
             }
             
             if (dirArr.length > winArr.length) {
