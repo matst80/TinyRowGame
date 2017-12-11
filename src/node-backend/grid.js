@@ -47,10 +47,12 @@ const grid = function (winLength) {
             let dirPos = new pos(p.x, p.y, p.value);
             let dirNeg = p.directionInvert(i);
             let dirArr = [];
+
             while (getValue(dirPos) == winValue) {
                 dirArr.push(dirPos);
                 dirPos = dirPos.direction(i);
             }
+
             while (getValue(dirNeg) == winValue) {
                 dirArr.push(dirNeg);
                 dirNeg = dirNeg.directionInvert(i);

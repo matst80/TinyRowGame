@@ -50,6 +50,7 @@ const gameLogic = function (opt) {
         }
         this.emitter.emit('removeuser',userNr);
         this.emitter.emit('userlist',t.users);
+        this.emitter.emit('grid',t.grid.getArray());
         if (t.currentUser==nr) {
             setNextUser();
         }
