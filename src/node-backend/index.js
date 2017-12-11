@@ -16,19 +16,6 @@ function getNextUser(userId) {
     return ret;
 }
 
-/*
-
-    0  | 
-    1  /
-    2  - 
-    3  \ 
-    4  |
-    5  /
-    6  -
-    7  \
-
-*/
-
 const pos = function (x, y, val) {
     var t = this;
 
@@ -37,48 +24,53 @@ const pos = function (x, y, val) {
     this.value = val;
 
     this.match = function (pos) {
-        return (pos.x == t.x && pos.y == t.y);
+        return (pos.x === t.x && pos.y === t.y);
     }
+}
 
-    this.direction = function (dir) {
-        var diffX;
-        var diffY;
-        switch (dir) {
-            case 0: // up |
-                diffY = 1;
-                diffX = 0;
-                break;
-            case 1: // up-right /
-                diffY = 1;
-                diffX = 1;
-                break;
-            case 2: // right -
-                diffY = 0;
-                diffX = 1;
-                break;
-            case 3: // down-right \
-                diffY = -1;
-                diffX = 1;
-                break;
-            case 4: // down |
-                diffY = 0;
-                diffX = -1;
-                break;
-            case 5: // down-left /
-                diffY = -1;
-                diffX = -1;
-                break;
-            case 6: // left /
-                diffY = 0;
-                diffX = -1;
-                break;
-            case 7: // up-left \
-                diffY = -1;
-                diffX = -1;
-                break;
-        }
-        return new pos(t.x + diffX, t.y + diffY, t.val);
+pos.prototype.direction = function (dir) {
+    var t = this;
+    var diffX;
+    var diffY;
+    switch (dir) {
+        case 0: // up |
+            diffY = 1;
+            diffX = 0;
+            break;
+        case 1: // up-right /
+            diffY = 1;
+            diffX = 1;
+            break;
+        case 2: // right -
+            diffY = 0;
+            diffX = 1;
+            break;
+        case 3: // down-right \
+            diffY = -1;
+            diffX = 1;
+            break;
+        case 4: // down |
+            diffY = -1;
+            diffX = 0;
+            break;
+        case 5: // down-left /
+            diffY = -1;
+            diffX = -1;
+            break;
+        case 6: // left -
+            diffY = 0;
+            diffX = -1;
+            break;
+        case 7: // up-left \
+            diffY = -1;
+            diffX = -1;
+            break;
     }
+    return new pos(t.x + diffX, t.y + diffY, t.value);
+};
+
+pos.prototype.directionInvert = function(dir) {
+    return this.direction(dir+4);
 }
 
 const grid = function (winLength) {
@@ -90,45 +82,47 @@ const grid = function (winLength) {
         var val = 0;
         t.points.map(function (v) {
             if (v.match(pos))
-                val = v.value; 
+                val = v.value;
         });
         return val;
     }
 
     function isFree(pos) {
-        return getValue(pos)==0;
+        return getValue(pos) == 0;
     }
 
     this.addPoint = function (pos) {
-        var isValid = isFree(pos);
+        var isValid = isFree(pos) && pos.value;
         if (isValid) {
             t.points.push(pos);
-            var inRow = t.checkFromPoint(pos);
-            //console.log('maxrow',inRow);            
-            return inRow;
+            return t.checkFromPoint(pos);
         }
         else
             return -1;
     }
 
     this.checkFromPoint = function (p) {
-        var winArr = [];
-        var winValue = p.value;
-        console.log(t.points);
-        for(var i=0;i<7;i++) {
-            var dirPos = new pos(p.x,p.y);
-            var dirArr = [];            
-            for(var j=0;j<t.pointInRowToWin;j++) {
-                if (getValue(dirPos) == winValue) {
-                    dirPos = dirPos.direction(i);
-                    winArr.push(dirPos);
-                }
-                else {
-                    break;
-                }
+        let winArr = [];
+        let winValue = p.value;
+        for (var i = 0; i < 4; i++) {
+            let dirPos = new pos(p.x, p.y, p.value);
+            let dirNeg = new pos(p.x, p.y, p.value);
+            let dirArr = [p];
+            while (getValue(dirPos) == winValue) {
+                dirPos = dirPos.direction(i);
+                dirPos.value = i;
+                dirArr.push(dirPos);
             }
-            if (dirArr.length>winArr.length)
+            while (getValue(dirNeg) == winValue) {
+                dirNeg = dirNeg.directionInvert(i);
+                dirNeg.value = i+4;
+                dirArr.push(dirNeg);
+            }
+            
+            if (dirArr.length > winArr.length) {
+                winArr = [];
                 winArr = dirArr;
+            }
         }
         return winArr;
     }
@@ -162,7 +156,6 @@ const gameLogic = function () {
     }
 
     this.handleMove = function (userId, move) {
-        console.log(userId,t.currentUser);
         if (userId == t.currentUser) {
             t.currentUser = getNextUser(userId);
             return t.grid.addPoint(new pos(move.x, move.y, userId));
@@ -175,9 +168,41 @@ const gameLogic = function () {
 var game = new gameLogic();
 var usrId = game.addUser();
 
-for (var i = 0; i < 6; i++) {
-    console.log('add',i,game.handleMove(usrId, { x: i, y: 1 }));
+var tmpgrid = [];
+for(var y=0;y<15;y++) {
+    var row = [];
+    tmpgrid.push(row);
+    for(var x=0;x<15;x++) {
+        row.push(0);
+    }
 }
+
+var maxArr = [];
+
+for (var i = 0; i < 100; i++) {
+    var x = Math.round(Math.random()*14);
+    var y = Math.round(Math.random()*14);
+    //console.log(x,y);
+    tmpgrid[y][x] = usrId;
+    var ret = game.handleMove(usrId, { x: x, y: y });
+    if (ret.length)
+    {
+        if (ret.length>maxArr.length) {
+            console.log('record',ret);
+            maxArr = [];
+            maxArr = ret;
+        }
+    }
+    else {
+        
+    }
+}
+
+tmpgrid.map(function(row) {
+    console.log(row.join(' '));
+});
+
+console.log('maxrow',maxArr);
 
 return;
 
