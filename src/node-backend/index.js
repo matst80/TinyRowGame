@@ -90,10 +90,10 @@ var wsserver = ws.createServer(function (conn) {
     });
     conn.on('close', function () {
         console.log('close');
-        netgame.removeUser(user.nr);
         for (var prp in listensers) {
             netgame.emitter.removeListener(prp, listensers[prp]);
         }
+        netgame.removeUser(user.nr);
     });
 
 }).listen(process.env.PORT || 8001);

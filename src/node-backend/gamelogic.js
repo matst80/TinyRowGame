@@ -76,7 +76,7 @@ const gameLogic = function (opt) {
             if (ret != -1) {
                 if (ret.length >= this.pointInRowToWin) {
                     t.emitter.emit('winner', userId);
-                    //t.grid.clear(ret);
+                    t.grid.clear(ret);
                 }
                 setNextUser();
                 t.emitter.emit('maxlength', ret, userId);

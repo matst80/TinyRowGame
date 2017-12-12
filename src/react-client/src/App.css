@@ -14,14 +14,29 @@
 }
 
 .grid {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width:525px;
+    margin: 15px auto;
 }
 
 .row {
   clear: both;
+}
+
+.cell {
+  background-color: #fff;
+  border:solid 1px #555;
+  line-height: 34px;
+  font-weight: bold;
+  padding-left:1px;
+  padding-top:1px;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+  float:left;
+  width: 34px;
+  height: 34px;
+  margin-left:-1px;
+  margin-top:-1px;
+  color:#fff;
 }
 
 .clr1 {
@@ -43,20 +58,7 @@
   transform: scale(2);
 }
 
-.cell {
-  border:solid 1px black;
-  line-height: 20px;
-  font-weight: bold;
-  padding-left:1px;
-  padding-top:1px;
-  transition: all 0.4s ease-in-out;
-  cursor: pointer;
-  float:left;
-  width: 20px;
-  height: 20px;
-  margin-left:-1px;
-  margin-top:-1px;
-}
+
 
 .App-title {
   font-size: 1.5em;
