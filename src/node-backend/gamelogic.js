@@ -6,6 +6,8 @@ class GameEvents extends EventEmitter {
 
 }
 
+var totusers = 0;
+
 const gameLogic = function (opt) {
 
     this.emitter = new GameEvents();
@@ -39,7 +41,7 @@ const gameLogic = function (opt) {
     this.reset();
 
     this.addUser = function () {
-        var userNr = t.users.length + 1;
+        var userNr = ++totusers;
         if (!t.currentUser)
             t.currentUser = userNr;
         t.users.push(userNr);
