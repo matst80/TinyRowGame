@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tinyrowgame.iOS", "iOS\tiny
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tinyrowgame.Droid", "Droid\tinyrowgame.Droid.csproj", "{8EEEB99F-1897-4FC2-AAC2-B61CA0F98C26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyWebSockets", "TinyWebSockets\TinyWebSockets.csproj", "{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -41,5 +43,17 @@ Global
 		{8EEEB99F-1897-4FC2-AAC2-B61CA0F98C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EEEB99F-1897-4FC2-AAC2-B61CA0F98C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EEEB99F-1897-4FC2-AAC2-B61CA0F98C26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Release|iPhone.Build.0 = Release|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

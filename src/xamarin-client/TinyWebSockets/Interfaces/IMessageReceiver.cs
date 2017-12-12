@@ -1,12 +1,12 @@
 ﻿using System;
-using TinyWebSockets.Core.Services;
+using TinyWebSockets;
 
 namespace TinyWebSockets.Interfaces
 {
-    public interface IActionReceiver
+    public interface IMessageReceiver
     {
         bool IsActive { get; }
         void SetStateService(MessageHandler stateService);
-        void HandleAction(IAction action);
+        void HandleAction(IMessage action);
     }
 }

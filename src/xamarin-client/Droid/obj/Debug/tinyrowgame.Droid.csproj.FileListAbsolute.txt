@@ -1,0 +1,1 @@
+/Users/mats/Projects/TinyRow/src/xamarin-client/Droid/obj/Debug/tinyrowgame.Droid.csprojResolveAssemblyReference.cache

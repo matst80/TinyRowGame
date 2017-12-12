@@ -1,39 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-//using Appalizer.Attributes;
-//using Appalizer.Core.Actions;
 using TinyWebSockets.Interfaces;
 using Newtonsoft.Json.Linq;
-//using TinyLog;
+using System.Reflection;
 
-namespace TinyWebSockets.Core.Services
+namespace TinyWebSockets
 {
+    public abstract class BaseMessage : IMessage
+    {
+        public string Type { get; set; }
+    }
+
     /// <summary>
     /// Keeps track of all state in the application. There should be only one!
     /// </summary>
-    public class StateService
+    public class MessageHandler
     {
         private readonly WebSocketService webSocketService;
-		private readonly List<IActionReceiver> _receivers = new List<IActionReceiver>();
+		private readonly List<IMessageReceiver> _receivers = new List<IMessageReceiver>();
+
+        private const string TypePropertyName = "type";
 
         public event EventHandler<Exception> OnError;
         public Dictionary<string, Type> ActionTypes { get; private set; }
 
-        public StateService(WebSocketService webSocketService)
+        public MessageHandler(WebSocketService webSocketService)
         {
-            Logger.Instance.LogVerbose("StateService initalizing");
-
             this.webSocketService = webSocketService;
+
             this.webSocketService.OnError += (sender, e) => OnError?.Invoke(sender, e);
             this.webSocketService.MessageRecieved += WebSocketService_MessageRecieved;
             PopulateActions();
-
-            Logger.Instance.LogVerbose("StateService initialized"); 
         }
 
-        public void RegisterActionReceiver(IActionReceiver receiver) 
+        public void RegisterActionReceiver(IMessageReceiver receiver) 
         {
             _receivers.Add(receiver);
             receiver.SetStateService(this);
@@ -48,37 +49,12 @@ namespace TinyWebSockets.Core.Services
             {
                 ret = ActionTypes[type];
             }
-            else
-            {
-                Logger.Instance.LogWarning($"No action type for {obj.ToString()}"); 
-            }
 
             return ret;
         }
 
-        public void Pause() => webSocketService.Pause();
-
-        public void Resume() => ConnectAsync();
-
-        public async Task ConnectAsync()
+        public void SendAsync(IMessage obj)
         {
-            try
-            {
-                var uri = "ws://fw.knatofs.se:8001";
-                Logger.Instance.LogVerbose($"Connecting to {uri}");
-                await webSocketService.StartListening(new Uri(uri)); // TODO Setting?
-                Task.Run(async () => await webSocketService.StartReceivingMessages());
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.Log(ex);
-                OnError?.Invoke(this, ex);
-            }
-        }
-
-        public void SendAsync(IAction obj)
-        {
-            Logger.Instance.LogVerboseEnterMethod();
             webSocketService.QueueAction(obj);
         }
 
@@ -89,8 +65,8 @@ namespace TinyWebSockets.Core.Services
         private void WebSocketService_MessageRecieved(JToken message)
         {
             // find the node
-            var returnType = GetTypeFromJObject(message["Type"]);
-            var action = message.ToObject(returnType) as IAction;
+            var returnType = GetTypeFromJObject(message[TypePropertyName]);
+            var action = message.ToObject(returnType) as IMessage;
 
             // update it
             if (action != null) 
@@ -104,7 +80,7 @@ namespace TinyWebSockets.Core.Services
         /// </summary>
         /// <param name="action">Action.</param>
         /// <param name="excluded">Excluded.</param>
-        public void SendActionToInternalReceivers(IAction action, params IActionReceiver[] excluded)
+        public void SendActionToInternalReceivers(IMessage action, params IMessageReceiver[] excluded)
         {
             foreach(var rec in _receivers) 
             {
@@ -119,9 +95,12 @@ namespace TinyWebSockets.Core.Services
         /// Scans this assembly for types that are decorated with ActionAttribute
         /// and stores the result in a lookup of typename and type.
         /// </summary>
-        private void PopulateActions()
+        public void PopulateActions(object parent = null)
         {
-            var interfaceType = typeof(IAction);
+            var ass = this.GetType().Assembly;
+            if (parent == null)
+                ass = Assembly.GetCallingAssembly();
+            var interfaceType = typeof(IMessage);
             ActionTypes = new Dictionary<string, Type>();
             var types = this.GetType().Assembly.GetExportedTypes();
 
@@ -129,10 +108,11 @@ namespace TinyWebSockets.Core.Services
             {
                 if (interfaceType.IsAssignableFrom(t))
                 {
-                    var attr = t.GetCustomAttributes(typeof(ActionAttribute), true).OfType<ActionAttribute>().FirstOrDefault();
+                    var attr = t.GetCustomAttributes(typeof(MessageAttribute), true).OfType<MessageAttribute>().FirstOrDefault();
                     if (attr != null)
                     {
-                        ActionTypes.Add(attr.TypeName, t);
+                        if (!ActionTypes.ContainsKey(attr.TypeName))
+                            ActionTypes.Add(attr.TypeName, t);
                     }
                 }
             }

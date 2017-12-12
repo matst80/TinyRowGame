@@ -1,0 +1,8 @@
+/Users/mats/Projects/TinyRow/src/xamarin-client/iOS/obj/iPhoneSimulator/Debug/device-builds/iphone10.4-11.2/ibtool/_BundleResourceWithLogicalName.items
+/Users/mats/Projects/TinyRow/src/xamarin-client/iOS/obj/iPhoneSimulator/Debug/device-builds/iphone10.4-11.2/actool/_PartialAppManifest.items
+/Users/mats/Projects/TinyRow/src/xamarin-client/iOS/obj/iPhoneSimulator/Debug/device-builds/iphone10.4-11.2/actool/_BundleResourceWithLogicalName.items
+/Users/mats/Projects/TinyRow/src/xamarin-client/iOS/obj/iPhoneSimulator/Debug/device-builds/iphone10.4-11.2/optimized/
+/Users/mats/Projects/TinyRow/src/xamarin-client/iOS/obj/iPhoneSimulator/Debug/tinyrowgame.iOS.csprojResolveAssemblyReference.cache
+/Users/mats/Projects/TinyRow/src/xamarin-client/iOS/obj/iPhoneSimulator/Debug/tinyrowgame.iOS.csproj.CoreCompileInputs.cache
+/Users/mats/Projects/TinyRow/src/xamarin-client/iOS/obj/iPhoneSimulator/Debug/tinyrowgame.iOS.App.xaml.g.cs
+/Users/mats/Projects/TinyRow/src/xamarin-client/iOS/obj/iPhoneSimulator/Debug/tinyrowgame.iOS.tinyrowgamePage.xaml.g.cs

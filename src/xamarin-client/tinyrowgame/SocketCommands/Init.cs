@@ -1,10 +1,16 @@
 ﻿using System;
+using TinyWebSockets;
+using TinyWebSockets.Interfaces;
+
 namespace tinyrowgame.SocketCommands
 {
-    public class Init
+    [Message("init")]
+    public class Init : BaseMessage
     {
         public Init()
         {
         }
+
+
     }
 }

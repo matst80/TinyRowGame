@@ -4,14 +4,15 @@ using System.Linq;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
-using Appalizer.Interfaces;
+using TinyWebSockets.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using TinyLog;
 
-namespace Appalizer.Core.Services
+namespace TinyWebSockets
 {
     public delegate void WebSocketMessageEventArgs(JToken message);
+
+    public delegate void WebSocketConnection(Uri uri);
 
     public class WebSocketService
     {
@@ -25,6 +26,8 @@ namespace Appalizer.Core.Services
 
         public event WebSocketMessageEventArgs MessageRecieved;
 
+        public event WebSocketConnection Connected;
+
         private byte[] messageBuffer = new byte[BUFFER_SIZE];
 
         public async Task StartListening(Uri serverUrl = null)
@@ -34,7 +37,7 @@ namespace Appalizer.Core.Services
 				_serverUrl = serverUrl;
             }
             if (client.State == WebSocketState.Closed) {
-                Logger.Instance.LogError("Socket is closed");
+                //Logger.Instance.LogError("Socket is closed");
                 client = new ClientWebSocket();
                 ScheduleNewConnection();
                 return;
@@ -44,11 +47,12 @@ namespace Appalizer.Core.Services
                 try
                 {
                     await client.ConnectAsync(_serverUrl, cancelConnectSource.Token);
+                    Connected?.Invoke(_serverUrl);
                     await SendFromQueue();
                 }
                 catch(Exception ex) 
                 {
-                    Logger.Instance.Log(ex);
+                    //Logger.Instance.Log(ex);
                     OnError?.Invoke(this,ex);
                 }
             }
@@ -63,9 +67,9 @@ namespace Appalizer.Core.Services
 
         private SemaphoreSlim sendLock = new SemaphoreSlim(1);
 
-        private List<IAction> sendQueue = new List<IAction>();
+        private List<IMessage> sendQueue = new List<IMessage>();
 
-        public void QueueAction(IAction action) {
+        public void QueueAction(IMessage action) {
             var triggerSend = !sendQueue.Any();
             sendQueue.Add(action);
             if (client.State == WebSocketState.Open)
@@ -77,7 +81,7 @@ namespace Appalizer.Core.Services
                 }
             }
             else {
-                Logger.Instance.LogInfo("Socket not open when sending, connecting...");
+                //Logger.Instance.LogInfo("Socket not open when sending, connecting...");
                 Task.Run(async () =>
                 {
                     await StartListening();
@@ -93,6 +97,9 @@ namespace Appalizer.Core.Services
             if (action != null && !_isSending)
             {
                 _isSending = true;
+                if (string.IsNullOrEmpty(action.Type) && action is BaseMessage basemsg) {
+                    PopulateType(basemsg);
+                }
                 var sendBuffer = System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(action));
                 var sendSegment = new ArraySegment<byte>(sendBuffer);
 
@@ -104,33 +111,40 @@ namespace Appalizer.Core.Services
                 catch(Exception ex) 
                 {
                     _isSending = false;
-                    Logger.Instance.Log(ex, "SendFromQueue failed"); 
+                    //Logger.Instance.Log(ex, "SendFromQueue failed"); 
                     OnError?.Invoke(this, ex);
                 }
                 _isSending = false;
                 await Task.Run(()=>SendFromQueue());
             }
         }
-   
+
+        private void PopulateType(BaseMessage action)
+        {
+            var msgAttr = action.GetType().GetCustomAttributes(typeof(MessageAttribute), true).OfType<MessageAttribute>().FirstOrDefault();
+            if (msgAttr != null)
+                action.Type = msgAttr.TypeName;
+        }
+
         public event EventHandler<Exception> OnError;
 
         public async Task StartReceivingMessages()
         {
             try
             {
-                Logger.Instance.LogVerboseEnterMethod();
+                //Logger.Instance.LogVerboseEnterMethod();
 
                 var segment = new ArraySegment<byte>(messageBuffer);
 
                 if (client == null)
                 {
-                    Logger.Instance.LogWarning("StartReceivingMessage: Client is null");
+                    //Logger.Instance.LogWarning("StartReceivingMessage: Client is null");
                     return;
                 }
 
                 if (client.State != WebSocketState.Open)
                 {
-                    Logger.Instance.LogWarning("StartReceivingMessage: Socket is not open");
+                    //Logger.Instance.LogWarning("StartReceivingMessage: Socket is not open");
                     return;
                 }
 
@@ -138,7 +152,7 @@ namespace Appalizer.Core.Services
 
                 if (result.MessageType == WebSocketMessageType.Close)
                 {
-                    Logger.Instance.LogError("Message type Close not supported");
+                    //Logger.Instance.LogError("Message type Close not supported");
                     await client.CloseAsync(WebSocketCloseStatus.InvalidMessageType, "Skit in, skit ut", CancellationToken.None);
                     return;
                 }
@@ -148,7 +162,7 @@ namespace Appalizer.Core.Services
                 {
                     if (count >= messageBuffer.Length)
                     {
-                        Logger.Instance.LogError("Message to long, buffer to small");
+                        //Logger.Instance.LogError("Message to long, buffer to small");
                         await client.CloseAsync(WebSocketCloseStatus.InvalidPayloadData, "That's too long", CancellationToken.None);
                         throw new WebSocketException(0, "Buffer to small");
                     }
@@ -164,7 +178,7 @@ namespace Appalizer.Core.Services
                     MessageRecieved?.Invoke(JToken.Parse(message));
                 }
                 catch(Exception ex) {
-                    Logger.Instance.Log(ex,"MessageRecieved delegate error");
+                    //Logger.Instance.Log(ex,"MessageRecieved delegate error");
                 }
                 if (client.State == WebSocketState.Open)
                 {
@@ -177,7 +191,7 @@ namespace Appalizer.Core.Services
             }
             catch (Exception ex)
             {
-                Logger.Instance.Log(ex,"WebSocketError");
+                //Logger.Instance.Log(ex,"WebSocketError");
                 OnError?.Invoke(this, ex);
                 ScheduleNewConnection();
                 throw;
@@ -186,7 +200,7 @@ namespace Appalizer.Core.Services
 
         private void ScheduleNewConnection() => Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(async task =>
         {
-            Logger.Instance.LogInfo("Reconnecting after delay");
+            //Logger.Instance.LogInfo("Reconnecting after delay");
             await StartListening();
         });
     }
