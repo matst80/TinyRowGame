@@ -1,27 +1,35 @@
 ﻿<Properties StartupConfiguration="{B8BE6224-7A2A-49F7-B94F-3CC0FA89B88D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="tinyrowgame/Logic/Service.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/FodyWeavers.xml">
     <Files>
-      <File FileName="tinyrowgame/SocketCommands/Init.cs" Line="4" Column="25" />
-      <File FileName="TinyWebSockets/WebSocketService.cs" Line="39" Column="14" />
-      <File FileName="TinyWebSockets/Interfaces/IMessage.cs" Line="8" Column="30" />
-      <File FileName="TinyWebSockets/MessageHandler.cs" Line="31" Column="31" />
-      <File FileName="TinyWebSockets/Interfaces/IMessageReceiver.cs" Line="8" Column="31" />
-      <File FileName="TinyWebSockets/Attributes/MessageAttribute.cs" Line="1" Column="1" />
-      <File FileName="tinyrowgame/App.xaml.cs" Line="11" Column="46" />
-      <File FileName="tinyrowgame/Logic/Service.cs" Line="6" Column="9" />
+      <File FileName="tinyrowgame/SocketCommands/Init.cs" Line="9" Column="1" />
+      <File FileName="TinyWebSockets/WebSocketService.cs" Line="139" Column="1" />
+      <File FileName="TinyWebSockets/Interfaces/IMessage.cs" Line="10" Column="9" />
+      <File FileName="TinyWebSockets/MessageHandler.cs" Line="35" Column="13" />
+      <File FileName="TinyWebSockets/Interfaces/IMessageReceiver.cs" Line="6" Column="38" />
+      <File FileName="TinyWebSockets/Attributes/MessageAttribute.cs" Line="7" Column="23" />
+      <File FileName="tinyrowgame/App.xaml.cs" Line="16" Column="13" />
+      <File FileName="tinyrowgame/Logic/Service.cs" Line="33" Column="89" />
+      <File FileName="tinyrowgame/tinyrowgamePage.xaml.cs" Line="30" Column="24" />
+      <File FileName="tinyrowgame/tinyrowgamePage.xaml" Line="5" Column="1" />
+      <File FileName="Droid/FodyWeavers.xml" Line="3" Column="22" />
+      <File FileName="iOS/FodyWeavers.xml" Line="3" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="tinyrowgame" expanded="True">
             <Node name="tinyrowgame" expanded="True">
-              <Node name="Logic" expanded="True">
-                <Node name="Service.cs" selected="True" />
-              </Node>
+              <Node name="Logic" expanded="True" />
               <Node name="SocketCommands" expanded="True" />
               <Node name="App.xaml" expanded="True" />
+              <Node name="tinyrowgamePage.xaml" expanded="True" />
+            </Node>
+            <Node name="tinyrowgame.Droid" expanded="True" />
+            <Node name="tinyrowgame.iOS" expanded="True">
+              <Node name="FodyWeavers.xml" selected="True" />
             </Node>
             <Node name="TinyWebSockets" expanded="True">
+              <Node name="Attributes" expanded="True" />
               <Node name="Interfaces" expanded="True" />
             </Node>
           </Node>
@@ -31,7 +39,11 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/mats/Projects/TinyRow/src/xamarin-client/tinyrowgame/tinyrowgamePage.xaml.cs" relfile="tinyrowgame/tinyrowgamePage.xaml.cs" line="39" column="1" />
+      <Breakpoint file="/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/WebSocketService.cs" relfile="TinyWebSockets/WebSocketService.cs" line="138" column="1" />
+      <Breakpoint file="/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/WebSocketService.cs" relfile="TinyWebSockets/WebSocketService.cs" line="139" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.tinyrowgame.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.1D5972E5-D235-46B1-AB0C-4523B83B7AE4">

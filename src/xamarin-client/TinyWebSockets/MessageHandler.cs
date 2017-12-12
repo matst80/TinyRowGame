@@ -31,7 +31,9 @@ namespace TinyWebSockets
 
             this.webSocketService.OnError += (sender, e) => OnError?.Invoke(sender, e);
             this.webSocketService.MessageRecieved += WebSocketService_MessageRecieved;
+            webSocketService.Connected += async (Uri uri) => await webSocketService.StartReceivingMessages();
             PopulateActions();
+
         }
 
         public void RegisterActionReceiver(IMessageReceiver receiver) 
@@ -100,9 +102,11 @@ namespace TinyWebSockets
             var ass = this.GetType().Assembly;
             if (parent == null)
                 ass = Assembly.GetCallingAssembly();
+            else
+                ass = parent.GetType().Assembly;
             var interfaceType = typeof(IMessage);
             ActionTypes = new Dictionary<string, Type>();
-            var types = this.GetType().Assembly.GetExportedTypes();
+            var types = ass.GetExportedTypes();
 
             foreach (var t in types)
             {

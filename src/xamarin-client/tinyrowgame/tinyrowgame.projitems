@@ -21,6 +21,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\Init.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logic\Service.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\Pos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)SocketCommands\" />

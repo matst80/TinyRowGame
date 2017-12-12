@@ -43,8 +43,7 @@ var wsserver = ws.createServer(function (conn) {
 
     var user = {
         id: conn.key,
-        nr: netgame.addUser(),
-        color: users.length + 1
+        nr: netgame.addUser()
     };
 
     function send(type, jsonObj) {

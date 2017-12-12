@@ -30,7 +30,7 @@ namespace tinyrowgame
             { 
                 if (_messageHandler==null) {
                     _messageHandler = new MessageHandler(SocketService);
-
+                    //Task.Run(async () => await _socketService.StartReceivingMessages());
                 }
                 return _messageHandler;
             } 

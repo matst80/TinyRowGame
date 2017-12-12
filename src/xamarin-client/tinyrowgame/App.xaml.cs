@@ -13,8 +13,7 @@ namespace tinyrowgame
 
         protected override void OnStart()
         {
-            // Finds messages
-            Service.MessageHandler.PopulateActions(this);
+            
         }
 
         protected override void OnSleep()
