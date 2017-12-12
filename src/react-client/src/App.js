@@ -177,8 +177,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     var t = this;
+    t.state = { turnText: 'TinyRow' };
     game.on('turn', function () {
+      t.setState({turnText: 'Your turn'})
       t.showAlert("Your turn",10000);
+    });
+    game.on('userchange',function(data) {
+      t.setState({turnText: data.userNr+'´s turn'})
     });
     game.on('winner', function (data) {
       t.showAlert("Winner:" + data.winner);
@@ -197,7 +202,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Fem i rad <TurnIndicator /></h1>
+          <h1 className="App-title">{this.state.turnText}</h1>
         </header>
         <Grid />
         <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
