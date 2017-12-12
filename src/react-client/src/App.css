@@ -8,9 +8,8 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background-color: #8DC63F;
+  padding: 10px;
   color: white;
 }
 
@@ -25,11 +24,38 @@
   clear: both;
 }
 
+.clr1 {
+  background-color: #8DC63F;
+  color:#fff;
+}
+
+.clr2 {
+  background-color: #3498db;
+  color:#fff;
+}
+
+.clr3 {
+  background-color: #9b59b6;
+  color:#fff;
+}
+
+.anim {
+  transform: scale(2);
+}
+
 .cell {
   border:solid 1px black;
+  line-height: 20px;
+  font-weight: bold;
+  padding-left:1px;
+  padding-top:1px;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
   float:left;
   width: 20px;
   height: 20px;
+  margin-left:-1px;
+  margin-top:-1px;
 }
 
 .App-title {

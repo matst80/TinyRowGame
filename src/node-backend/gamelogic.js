@@ -53,7 +53,7 @@ const gameLogic = function (opt) {
         var idx = t.users.indexOf(nr);
         if (idx !== -1) {
             t.users.splice(idx,1);
-            t.grid.removeWithValue(nr);
+            //t.grid.removeWithValue(nr);
         }
         if (t.users.length==0) {
             t.reset();

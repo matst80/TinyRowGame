@@ -2,69 +2,82 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const gameEngine = function() {
+const gameEngine = function () {
   var t = this;
   t.handlers = {};
-  
-  function addHandler(key,cb) {
+
+  function addHandler(key, cb) {
     if (t.handlers[key])
       t.handlers[key].push(cb);
     else
-    t.handlers[key] = [cb];
+      t.handlers[key] = [cb];
   }
 
   function emit(key) {
-    
+
     let argArray = Array.from(arguments);
     let calldata = argArray.slice(1);
     let hdls = t.handlers[key];
 
     if (hdls) {
-      hdls.map(function(v,i){
+      hdls.map(function (v, i) {
         v.apply(this, calldata);
       });
     }
   }
 
-  this.on = function(key,cb) {
-    addHandler(key,cb);
+  this.on = function (key, cb) {
+    addHandler(key, cb);
   }
 
-  this.place = function(pos) {
-    pos.type='place';
+  this.place = function (pos) {
+    pos.type = 'place';
     socket.send(JSON.stringify(pos));
   }
 
-  var socket = new WebSocket("ws://192.168.1.131:8001");
-  socket.onopen = function() {
-      console.log('open');
-      socket.onmessage = function(msg) {
-          var jsonMsg = JSON.parse(msg.data);
-          console.log(jsonMsg);   
-          if (jsonMsg.type) {
-            emit(jsonMsg.type,jsonMsg);
-          }
-                    
+  var socket = new WebSocket("ws://10.10.10.181:8001");
+  socket.onopen = function () {
+    console.log('open');
+    socket.onmessage = function (msg) {
+      var jsonMsg = JSON.parse(msg.data);
+      console.log(jsonMsg);
+      if (jsonMsg.type) {
+        emit(jsonMsg.type, jsonMsg);
       }
-  }  
+
+    }
+  }
 }
 
 class Cell extends Component {
   constructor(props) {
     super(props);
     this.state = props;
-    
+    this.lastValue = 0;
     this.makeTurn = this.makeTurn.bind(this);
   }
+  componentDidUpdate(next, last) {
+    if (last && next) {
+      if (next.value != this.lastValue) {
+        this.lastValue = next.value;
+        setTimeout(() => {
+          this.cellElm.classList.add('anim');
+        }, 50);
+      }
+    }
+    setTimeout(() => {
+      this.cellElm.classList.remove('anim');
+    }, 450);
+  }
   classes() {
-    return "cell clr"+this.props.value;
+    return "cell clr" + this.props.value;
   }
   makeTurn() {
     console.log('clicketiclick');
-    game.place({x:this.props.x,y:this.props.y});
+    game.place({ x: this.props.x, y: this.props.y });
   }
   render() {
-    return <div className={this.classes()} onClick={this.makeTurn}>{this.props.value}</div>
+    return <div ref={(cellElm) => { this.cellElm = cellElm; }} className={this.classes()} onClick={this.makeTurn}>{this.props.value}</div>
   }
 }
 
@@ -79,60 +92,59 @@ class Grid extends Component {
     this.grid = [];
     this.rows = minSize;
     this.cols = minSize;
-    this.state = { grid: [[]]};
-    
-    game.on('grid',function (data){
+    this.state = { grid: [[]] };
+
+    game.on('grid', function (data) {
       console.log('grid', data);
       t.updateGrid(data.grid);
     });
-    game.on('init',function (griddata){
+    game.on('init', function (griddata) {
       console.log('init', griddata);
       t.updateGrid(griddata.points);
     });
   }
-  getVal(x,y) {
-    var ret = '';
-    this.gridData.map(function(v) {
-      if (v.x==x && v.y==y)
-        ret = v.v;
+  getVal(x, y) {
+    var ret = { id: y + '-' + x, val: 0 };
+    this.gridData.map(function (v) {
+      if (v.x == x && v.y == y)
+        ret.val = v.v;
     });
     return ret;
   }
   updateGrid(data) {
-    
-    
+
+
     this.setGridSize(data);
-    console.log('griddata',this.rows,this.cols);
+    console.log('griddata', this.rows, this.cols);
     var grid = [];
-    for(var y=0;y<this.rows;y++) {
+    for (var y = 0; y < this.rows; y++) {
       var row = [];
       grid.push(row);
-      for(var x=0;x<this.cols;x++) {
-        var val = this.getVal(x,y,data);
+      for (var x = 0; x < this.cols; x++) {
+        var val = this.getVal(x, y, data);
         row.push(val);
-      }  
+      }
     }
-    console.log('newgrid',grid);
-    this.setState({grid:grid});
+    console.log('newgrid', grid);
+    this.setState({ grid: grid });
   }
   setGridSize(data) {
-    
+
     this.gridData = [];
-    if (data && data.length)
-    {    
+    if (data && data.length) {
       const maxVal = 999999999;
       let minX = maxVal;
       let minY = maxVal;
       let maxX = -maxVal;
       let maxY = -maxVal;
 
-      data.map(function(v) {
-        minX = Math.min(v.x,minX);
-        minY = Math.min(v.y,minY);
-        maxX = Math.max(v.x,maxX);
-        maxY = Math.max(v.y,maxY);
+      data.map(function (v) {
+        minX = Math.min(v.x, minX);
+        minY = Math.min(v.y, minY);
+        maxX = Math.max(v.x, maxX);
+        maxY = Math.max(v.y, maxY);
       });
-      
+
       var changeX = 0;
       var changeY = 0;
 
@@ -144,23 +156,24 @@ class Grid extends Component {
         changeY = Math.abs(minY);
         maxY += changeY;
       }
-      
-      this.rows = Math.max(minSize,(maxY-minY)+2);
-      this.cols = Math.max(minSize,(maxX-minX)+2);
 
-      this.gridData = data.map(function(v) {
-        v.x+=(changeX);
-        v.y+=(changeY);
+      this.rows = Math.max(minSize, (maxY - minY) + 2);
+      this.cols = Math.max(minSize, (maxX - minX) + 2);
+
+      this.gridData = data.map(function (v) {
+        v.x += (changeX);
+        v.y += (changeY);
         return v;
       });
     }
   }
   render() {
-  
-    return <div className="grid">{ this.state.grid.map((r,y) => {
-      return <div className="row">{ r.map((c,x) => {
-        return <Cell x={x} y={y} value={c} />
-      })}</div> }) }</div>
+
+    return <div className="grid">{this.state.grid.map((r, y) => {
+      return <div className="row" key={y}>{r.map((c, x) => {
+        return <Cell x={x} y={y} value={c.val} key={c.id} />
+      })}</div>
+    })}</div>
   }
 }
 
