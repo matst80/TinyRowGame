@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node.extend": "^2.0.0",
     "nodejs-websocket": "^1.7.1"
   }
 }

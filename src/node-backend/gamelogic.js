@@ -3,7 +3,7 @@ const grid = require('./grid');
 const EventEmitter = require('events');
 
 class GameEvents extends EventEmitter {
-
+    
 }
 
 const gameLogic = function (opt) {
@@ -14,6 +14,11 @@ const gameLogic = function (opt) {
     var t = this;
 
     function setNextUser() {
+        if (t.users.length==0)
+        {
+            t.reset();
+            return;
+        }
         var idx = t.users.indexOf(t.currentUser) + 1;
         if (idx >= t.users.length)
             idx = 0;
@@ -27,6 +32,7 @@ const gameLogic = function (opt) {
         t.grid = new grid();
         t.users = [];
         t.currentUser = false;
+        t.emitter.emit('reset', t.grid);
     }
 
     this.reset();
@@ -49,13 +55,17 @@ const gameLogic = function (opt) {
             t.users.splice(idx,1);
             t.grid.removeWithValue(nr);
         }
-
-        t.emitter.emit('removeuser',userNr);
-        t.emitter.emit('userlist',t.users);
-        t.emitter.emit('grid',t.grid.getArray());
-        
-        if (t.currentUser==nr) {
-            setNextUser();
+        if (t.users.length==0) {
+            t.reset();
+        }
+        else {
+            t.emitter.emit('removeuser', nr);
+            t.emitter.emit('userlist', t.users);
+            t.emitter.emit('grid', t.grid.getArray());
+            
+            if (t.currentUser==nr) {
+                setNextUser();
+            }
         }
     }
 
@@ -65,7 +75,7 @@ const gameLogic = function (opt) {
             var ret = t.grid.addPoint(new pos(move.x, move.y, userId));
 
             t.emitter.emit('maxlength', ret, userId);
-            t.emitter.emit('grid',t.grid.getArray());
+            t.emitter.emit('grid', t.grid.getArray());
 
             return ret;
         }

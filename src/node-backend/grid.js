@@ -32,12 +32,19 @@ const grid = function (winLength) {
         var newlist = t.points.map(function(v) {
             if (v.value!==nr)
                 return v;
+            else return false;
         });
         t.points = newlist;
     }
 
     this.getArray = function() {
-        return t.points;
+        return t.points.map(function(v) {
+            return {
+                x: v.x,
+                y: v.y,
+                v: v.value
+            };
+        });
     }
 
     this.checkFromPoint = function (p) {
