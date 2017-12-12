@@ -178,7 +178,7 @@ class App extends Component {
     super(props);
     var t = this;
     game.on('turn', function () {
-      t.showAlert("Your turn");
+      t.showAlert("Your turn",10000);
     });
     game.on('winner', function (data) {
       t.showAlert("Winner:" + data.winner);
@@ -187,9 +187,9 @@ class App extends Component {
       t.showAlert('Users:' + data.users.join(', '));
     });
   }
-  showAlert(msg) {
+  showAlert(msg,time) {
     this.msg.show(msg, {
-      time: 3000,
+      time: time||3000,
       type: 'success'
     });
   }
@@ -197,7 +197,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Fem i rad</h1>
+          <h1 className="App-title">Fem i rad <TurnIndicator /></h1>
         </header>
         <Grid />
         <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
