@@ -6,7 +6,6 @@ class GameEvents extends EventEmitter {
 
 }
 
-
 const gameLogic = function (opt) {
     
     this.emitter = new GameEvents();
