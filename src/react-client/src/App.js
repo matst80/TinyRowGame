@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AlertContainer from 'react-alert'
 import logo from './logo.svg';
 import './App.css';
 
@@ -56,19 +57,6 @@ class Cell extends Component {
     this.lastValue = 0;
     this.makeTurn = this.makeTurn.bind(this);
   }
-  componentDidUpdate(next, last) {
-    if (last && next) {
-      if (next.value != this.lastValue) {
-        this.lastValue = next.value;
-        setTimeout(() => {
-          this.cellElm.classList.add('anim');
-        }, 50);
-      }
-    }
-    setTimeout(() => {
-      this.cellElm.classList.remove('anim');
-    }, 450);
-  }
   classes() {
     return "cell clr" + this.props.value;
   }
@@ -102,6 +90,7 @@ class Grid extends Component {
       console.log('init', griddata);
       t.updateGrid(griddata.points);
     });
+
   }
   getVal(x, y) {
     var ret = { id: y + '-' + x, val: 0 };
@@ -178,6 +167,32 @@ class Grid extends Component {
 }
 
 class App extends Component {
+  alertOptions = {
+    offset: 14,
+    position: 'bottom left',
+    theme: 'dark',
+    time: 5000,
+    transition: 'scale'
+  }
+  constructor(props) {
+    super(props);
+    var t = this;
+    game.on('turn', function () {
+      t.showAlert("Your turn");
+    });
+    game.on('winner', function (data) {
+      t.showAlert("Winner:" + data.winner);
+    });
+    game.on('userlist', function (data) {
+      t.showAlert('Users:' + data.users.join(', '));
+    });
+  }
+  showAlert(msg) {
+    this.msg.show(msg, {
+      time: 3000,
+      type: 'success'
+    });
+  }
   render() {
     return (
       <div className="App">
@@ -185,6 +200,7 @@ class App extends Component {
           <h1 className="App-title">Fem i rad</h1>
         </header>
         <Grid />
+        <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
       </div>
     );
   }

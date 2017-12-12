@@ -3,19 +3,20 @@ const grid = require('./grid');
 const EventEmitter = require('events');
 
 class GameEvents extends EventEmitter {
-    
+
 }
 
 const gameLogic = function (opt) {
-    
+
     this.emitter = new GameEvents();
-    this.settings = opt;
+    this.settings = opt||{};
+    this.pointInRowToWin = this.settings.winningLength||5;
+
 
     var t = this;
 
     function setNextUser() {
-        if (t.users.length==0)
-        {
+        if (t.users.length == 0) {
             t.reset();
             return;
         }
@@ -43,27 +44,27 @@ const gameLogic = function (opt) {
             t.currentUser = userNr;
         t.users.push(userNr);
 
-        t.emitter.emit('adduser',userNr);
-        t.emitter.emit('userlist',t.users);
-        
+        t.emitter.emit('adduser', userNr);
+        t.emitter.emit('userlist', t.users);
+
         return userNr;
     }
 
-    this.removeUser = function(nr) {
+    this.removeUser = function (nr) {
         var idx = t.users.indexOf(nr);
         if (idx !== -1) {
-            t.users.splice(idx,1);
-            //t.grid.removeWithValue(nr);
+            t.users.splice(idx, 1);
+            t.grid.removeWithValue(nr);
         }
-        if (t.users.length==0) {
+        if (t.users.length == 0) {
             t.reset();
         }
         else {
             t.emitter.emit('removeuser', nr);
             t.emitter.emit('userlist', t.users);
             t.emitter.emit('grid', t.grid.getArray());
-            
-            if (t.currentUser==nr) {
+
+            if (t.currentUser == nr) {
                 setNextUser();
             }
         }
@@ -71,12 +72,16 @@ const gameLogic = function (opt) {
 
     this.handleMove = function (userId, move) {
         if (userId == t.currentUser) {
-            setNextUser();
             var ret = t.grid.addPoint(new pos(move.x, move.y, userId));
-
-            t.emitter.emit('maxlength', ret, userId);
-            t.emitter.emit('grid', t.grid.getArray());
-
+            if (ret != -1) {
+                if (ret.length >= this.pointInRowToWin) {
+                    t.emitter.emit('winner', userId);
+                    //t.grid.clear(ret);
+                }
+                setNextUser();
+                t.emitter.emit('maxlength', ret, userId);
+                t.emitter.emit('grid', t.grid.getArray());
+            }
             return ret;
         }
         else

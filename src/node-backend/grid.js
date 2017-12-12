@@ -1,17 +1,23 @@
 const pos = require('./pos');
 
-const grid = function (winLength) {
+const grid = function () {
     var t = this;
-    this.pointInRowToWin = winLength;
     this.points = [];
 
-    function getValue(pos) {
-        var val = 0;
-        t.points.map(function (v) {
-            if (v.match(pos))
-                val = v.value;
+    function getPoint(p) {
+        var val = new pos(p.x,p.y,0);
+        t.points.map(function (v,i) {
+            if (v.match(p)) {
+                val = v;
+                val.idx = i;
+            }
         });
         return val;
+    }
+
+    function getValue(pos) {
+        var val = getPoint(pos);
+        return val.value;
     }
 
     function isFree(pos) {
@@ -28,17 +34,31 @@ const grid = function (winLength) {
             return -1;
     }
 
-    this.removeWithValue = function(nr) {
-        var newlist = t.points.map(function(v) {
-            if (v.value!==nr)
-                return v;
-            else return false;
+    this.clear = function(list) {
+        if (!list) {
+            t.points = [];
+        }
+        else {
+            list.map(function(v){
+                var op = getPoint(v);
+                if (op.idx) {
+                    t.points.splice(op.idx,1);
+                }
+            });
+        }
+    }
+
+    this.removeWithValue = function (nr) {
+        var newlist = t.points.map(function (v) {
+            if (v.value == nr)
+                v.value = 0;
+            return v;
         });
         t.points = newlist;
     }
 
-    this.getArray = function() {
-        return t.points.map(function(v) {
+    this.getArray = function () {
+        return t.points.map(function (v) {
             return {
                 x: v.x,
                 y: v.y,
@@ -64,7 +84,7 @@ const grid = function (winLength) {
                 dirArr.push(dirNeg);
                 dirNeg = dirNeg.directionInvert(i);
             }
-            
+
             if (dirArr.length > winArr.length) {
                 winArr = [];
                 winArr = dirArr;
