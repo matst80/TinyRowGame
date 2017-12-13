@@ -179,14 +179,14 @@ namespace TinyWebSockets
 
                 var message = System.Text.Encoding.UTF8.GetString(messageBuffer, 0, count);
 
-                try
-                {
-                    MessageReceived?.Invoke(this, JToken.Parse(message));
-                }
-                catch (Exception ex)
-                {
-                    //Logger.Instance.Log(ex,"MessageRecieved delegate error");
-                }
+
+
+                    
+                MessageReceived?.Invoke(this, JToken.Parse(message));
+                    
+
+
+                
                 if (client.State == WebSocketState.Open)
                 {
                     await StartReceivingMessages();

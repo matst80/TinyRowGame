@@ -14,7 +14,7 @@ namespace tinyrowgame.Controls
         {
             VerticalTextAlignment = TextAlignment.Center,
             HorizontalTextAlignment = TextAlignment.Center,
-            TextColor = Color.White
+            TextColor = Color.Black
         };
 
         private readonly Color[] DEFAULT_COLORS = { Color.White, Color.Red, Color.Blue, Color.Green, Color.Aqua };
@@ -29,7 +29,7 @@ namespace tinyrowgame.Controls
 
         public void PlaceInGrid(double v)
         {
-            this.LayoutTo(new Rectangle(CellData.RealX*v,CellData.RealY*v,v,v));
+            this.Layout(new Rectangle(CellData.RealX*v,CellData.RealY*v,v,v));
         }
 
         public CellPosition CellData => _cellpos;
@@ -48,22 +48,23 @@ namespace tinyrowgame.Controls
 
         internal bool Match(Pos p)
         {
-            return (p.Id == CellData.Id || (p.X == CellData.RealX && p.GridY == CellData.RealY));
+            return (p.Id == CellData.Id || Match(p.X, p.Y));
         }
 
         internal void Update(Pos p)
         {
             if (p.Value!=CellData.Value) {
-                this.ColorTo(BackgroundColor, DEFAULT_COLORS[p.Value],(_) => {
+                BackgroundColor = DEFAULT_COLORS[p.Value];
+                //this.ColorTo(BackgroundColor, DEFAULT_COLORS[p.Value],(_) => {
                     _label.Text = p.Value.ToString();
-                });
+                //});
             }
             CellData.GridPosition = p;
         }
 
         internal bool Match(int x, int y)
         {
-            throw new NotImplementedException();
+            return (x == CellData.RealX && y == CellData.RealY);
         }
     }
 }

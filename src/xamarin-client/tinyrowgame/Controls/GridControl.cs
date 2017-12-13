@@ -41,15 +41,24 @@ namespace tinyrowgame.Controls
 
         public void HandleAction(IMessage action)
         {
-            switch (action)
+            Device.BeginInvokeOnMainThread(() =>
             {
-                case GridPositions grid:
-                    UpdateGrid(grid.Grid);
-                    break;
-                case Init init:
-                    UpdateGrid(init.Points);
-                    break;
-            }
+                try
+                {
+                    switch (action)
+                    {
+                        case GridPositions grid:
+                            UpdateGrid(grid.Grid);
+                            break;
+                        case Init init:
+                            UpdateGrid(init.Points);
+                            break;
+                    }
+                }
+                catch(Exception ex) {
+                    throw ex;    
+                }
+            });
         }
 
         private const int maxVal = int.MaxValue;
@@ -75,6 +84,7 @@ namespace tinyrowgame.Controls
                     });
                 }
             };
+            ret.GestureRecognizers.Add(setValue);
             return ret;
         }
 
@@ -101,13 +111,13 @@ namespace tinyrowgame.Controls
                     var existing = Children.FirstOrDefault(d => d.Match(x, y));
                     if (existing == null)
                     {
-                        existing = CreateCell(y, y);
-
+                        existing = CreateCell(x, y);
+                        //existing.PlaceInGrid(20);
                         Children.Add(existing);
                     }
                 }
             }
-            ForceLayout();
+            //ForceLayout();
         }
 
         private int offsetX;
@@ -136,8 +146,8 @@ namespace tinyrowgame.Controls
                 p.Normalize(minX, minY);
             }
 
-            offsetX = minX;
-            offsetY = minY;
+            //offsetX = minX;
+            //offsetY = minY;
         }
     }
 }

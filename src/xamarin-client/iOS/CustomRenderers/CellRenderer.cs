@@ -3,7 +3,7 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(tinyrowgame.Controls.Cell),typeof(CellRenderer))]
+//[assembly: ExportRenderer(typeof(tinyrowgame.Controls.Cell),typeof(CellRenderer))]
 
 namespace tinyrowgame.iOS.CustomRenderers
 {

@@ -68,12 +68,15 @@ namespace TinyWebSockets
         {
             // find the node
             var returnType = GetTypeFromJObject(message[TypePropertyName]);
-            var action = message.ToObject(returnType) as IMessage;
-
-            // update it
-            if (action != null) 
+            if (returnType != null)
             {
-                SendActionToInternalReceivers(action);
+                var action = message.ToObject(returnType) as IMessage;
+
+                // update it
+                if (action != null)
+                {
+                    SendActionToInternalReceivers(action);
+                }
             }
         }
 

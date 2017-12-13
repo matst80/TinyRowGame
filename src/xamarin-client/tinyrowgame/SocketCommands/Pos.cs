@@ -31,13 +31,13 @@ namespace tinyrowgame.SocketCommands
             }
         }
 
-        [JsonProperty("value")]
+        [JsonProperty("v")]
         public int Value { get; set; }
 
         public void Normalize(int normalizeX, int normalizeY)
         {
-            DiffX = normalizeX;
-            DiffY = normalizeY;
+            //DiffX = normalizeX;
+            //DiffY = normalizeY;
         }
     }
 }

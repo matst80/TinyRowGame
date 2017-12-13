@@ -62,7 +62,8 @@ const grid = function () {
             return {
                 x: v.x,
                 y: v.y,
-                v: v.value
+                v: v.value,
+                id: v.id
             };
         });
     }
