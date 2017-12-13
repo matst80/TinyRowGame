@@ -4,11 +4,14 @@ const pos = function (x, y, val) {
     this.x = x;
     this.y = y;
     this.value = val;
+    this.id = posIdCount++;
 
     this.match = function (pos) {
         return (pos.x === t.x && pos.y === t.y);
     }
 }
+
+var posIdCount = 0;
 
 pos.prototype.direction = function (dir) {
     var t = this;
