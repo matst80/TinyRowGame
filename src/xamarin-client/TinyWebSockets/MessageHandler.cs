@@ -55,7 +55,7 @@ namespace TinyWebSockets
             return ret;
         }
 
-        public void SendAsync(IMessage obj)
+        public void SendMessage(IMessage obj)
         {
             webSocketService.QueueAction(obj);
         }

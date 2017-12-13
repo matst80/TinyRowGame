@@ -15,4 +15,5 @@ namespace tinyrowgame.SocketCommands
 
         public IList<Pos> Points { get; set; }
     }
+
 }
