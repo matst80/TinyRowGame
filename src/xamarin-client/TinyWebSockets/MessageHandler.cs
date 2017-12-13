@@ -30,8 +30,8 @@ namespace TinyWebSockets
             this.webSocketService = webSocketService;
 
             this.webSocketService.OnError += (sender, e) => OnError?.Invoke(sender, e);
-            this.webSocketService.MessageRecieved += WebSocketService_MessageRecieved;
-            webSocketService.Connected += async (Uri uri) => await webSocketService.StartReceivingMessages();
+            this.webSocketService.MessageReceived += WebSocketService_MessageRecieved;
+            webSocketService.Connected += async (object sender, Uri uri) => await webSocketService.StartReceivingMessages();
             PopulateActions();
 
         }
@@ -64,7 +64,7 @@ namespace TinyWebSockets
         /// Message received over websockets and converted to IAction here
         /// </summary>
         /// <param name="message">Message.</param>
-        private void WebSocketService_MessageRecieved(JToken message)
+        private void WebSocketService_MessageRecieved(object sender, JToken message)
         {
             // find the node
             var returnType = GetTypeFromJObject(message[TypePropertyName]);
