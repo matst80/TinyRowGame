@@ -98,7 +98,13 @@ namespace tinyrowgame.Controls
                 if (existing == null)
                 {
                     existing = CreateCell(p.GridX, p.GridY);
-                    Children.Add(existing);
+                    try
+                    {
+                        Children.Add(existing);
+                    }
+                    catch(Exception ex) {
+                        throw ex;
+                    }
                 }
                 existing.Update(p);
 

@@ -54,10 +54,11 @@ namespace tinyrowgame.Controls
         internal void Update(Pos p)
         {
             if (p.Value!=CellData.Value) {
-                BackgroundColor = DEFAULT_COLORS[p.Value];
-                //this.ColorTo(BackgroundColor, DEFAULT_COLORS[p.Value],(_) => {
-                    _label.Text = p.Value.ToString();
-                //});
+                BackgroundColor = DEFAULT_COLORS[p.Value % DEFAULT_COLORS.Length];
+                _label.Text = p.Value.ToString();
+                //this.ColorTo(BackgroundColor, DEFAULT_COLORS[p.Value % DEFAULT_COLORS.Length],(_) => {
+                    
+                //},350, Easing.CubicInOut);
             }
             CellData.GridPosition = p;
         }
