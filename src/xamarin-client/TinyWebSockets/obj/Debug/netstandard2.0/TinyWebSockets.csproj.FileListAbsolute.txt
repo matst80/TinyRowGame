@@ -1,9 +1,0 @@
-/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/obj/Debug/netstandard2.0/TinyWebSockets.csprojResolveAssemblyReference.cache
-/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/obj/Debug/netstandard2.0/TinyWebSockets.csproj.CoreCompileInputs.cache
-/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/obj/Debug/netstandard2.0/TinyWebSockets.AssemblyInfoInputs.cache
-/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/obj/Debug/netstandard2.0/TinyWebSockets.AssemblyInfo.cs
-/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/bin/Debug/netstandard2.0/TinyWebSockets.deps.json
-/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/bin/Debug/netstandard2.0/TinyWebSockets.dll
-/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/bin/Debug/netstandard2.0/TinyWebSockets.pdb
-/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/obj/Debug/netstandard2.0/TinyWebSockets.dll
-/Users/mats/Projects/TinyRow/src/xamarin-client/TinyWebSockets/obj/Debug/netstandard2.0/TinyWebSockets.pdb
