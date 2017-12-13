@@ -23,6 +23,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Logic\Service.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\Pos.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\User.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\UserList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\Winner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\OtherUserTurn.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\GridPositions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\TurnToken.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)SocketCommands\" />
