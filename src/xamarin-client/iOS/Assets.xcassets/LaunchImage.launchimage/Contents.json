@@ -47,6 +47,7 @@
       "minimum-system-version": "7.0",
       "orientation": "portrait",
       "extent": "full-screen",
+      "filename": "splash-640-960.png",
       "size": "320x480",
       "scale": "2x",
       "idiom": "iphone"

@@ -113,6 +113,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-180.png" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-640-1136.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-640-960.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
