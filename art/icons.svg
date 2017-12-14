@@ -21,6 +21,18 @@
      id="defs4">
     <linearGradient
        inkscape:collect="always"
+       id="linearGradient4514">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop4516" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop4518" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
        id="linearGradient4235">
       <stop
          style="stop-color:#37cc39;stop-opacity:1;"
@@ -44,19 +56,6 @@
          stdDeviation="2.7794111"
          id="feGaussianBlur4188" />
     </filter>
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter4186-1"
-       x="-0.12008844"
-       width="1.2401769"
-       y="-0.11991169"
-       height="1.2398233">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="2.7794111"
-         id="feGaussianBlur4188-1" />
-    </filter>
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4235"
@@ -67,6 +66,90 @@
        y2="551.43738"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(5.8913345,10.260635)" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4186-8"
+       x="-0.12008844"
+       width="1.2401769"
+       y="-0.11991169"
+       height="1.2398233">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.7794111"
+         id="feGaussianBlur4188-4" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4186-8-3"
+       x="-0.12008844"
+       width="1.2401769"
+       y="-0.11991169"
+       height="1.2398233">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.7794111"
+         id="feGaussianBlur4188-4-0" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4186-4"
+       x="-0.12008844"
+       width="1.2401769"
+       y="-0.11991169"
+       height="1.2398233">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.7794111"
+         id="feGaussianBlur4188-8" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4235"
+       id="linearGradient4375"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.2,0,0,5.68,566.46939,-2011.2143)"
+       x1="159.86867"
+       y1="420.62543"
+       x2="333.4328"
+       y2="551.43738" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4186-8-3-0"
+       x="-0.12008844"
+       width="1.2401769"
+       y="-0.11991169"
+       height="1.2398233">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.7794111"
+         id="feGaussianBlur4188-4-0-9" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4186-8-3-0-9"
+       x="-0.12008844"
+       width="1.2401769"
+       y="-0.11991169"
+       height="1.2398233">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.7794111"
+         id="feGaussianBlur4188-4-0-9-4" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4514"
+       id="linearGradient4520"
+       x1="1192.2569"
+       y1="876.45793"
+       x2="1543.7101"
+       y2="876.45793"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -75,9 +158,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.1939888"
-     inkscape:cx="232.0272"
-     inkscape:cy="573.09899"
+     inkscape:zoom="0.32314564"
+     inkscape:cx="1500.1887"
+     inkscape:cy="260.76156"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -103,8 +186,47 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
+       id="g4418"
+       transform="translate(-87.66364,-134.0738)"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/splash-640-1136.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         style="fill:#17b33e;fill-opacity:1"
+         inkscape:export-ydpi="54"
+         inkscape:export-xdpi="54"
+         inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/icon-120"
+         transform="matrix(3.2,0,0,5.68,547.61697,-2069.4947)"
+         id="g4261-3-6">
+        <rect
+           style="opacity:1;fill:#17b33e;fill-opacity:1;stroke:none;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect4136-6-2-1"
+           width="200"
+           height="200"
+           x="147.98416"
+           y="380.11145" />
+        <rect
+           style="opacity:1;fill:#17b33e;fill-opacity:1;stroke:none;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect4136-4-5"
+           width="200"
+           height="200"
+           x="147.98416"
+           y="380.11145" />
+      </g>
+      <rect
+         y="89.538315"
+         x="1021.1663"
+         height="1136"
+         width="640"
+         id="rect4136-4"
+         style="opacity:1;fill:url(#linearGradient4375);fill-opacity:1;stroke:none;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
        id="g4261"
-       transform="translate(-16.864261,-15.041098)">
+       transform="translate(-16.864261,-15.041098)"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/icon-120"
+       inkscape:export-xdpi="54"
+       inkscape:export-ydpi="54">
       <rect
          y="380.11145"
          x="147.98416"
@@ -121,36 +243,155 @@
          style="opacity:1;fill:url(#linearGradient4227);fill-opacity:1;stroke:none;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </g>
     <g
-       id="g4190"
-       transform="translate(17.775843,-9.5716075)">
+       id="g4285"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/icon-120"
+       inkscape:export-xdpi="54"
+       inkscape:export-ydpi="54">
       <path
          sodipodi:nodetypes="ccccccccccccc"
          inkscape:connector-curvature="0"
          id="path4157-5"
-         d="m 149.19037,451.49634 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76436,9.89113 13.82541,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04143,-13.26923 -18.04143,-13.26923 0,0 4.07634,-7.94084 17.47319,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17531,18.29907 -13.17531,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         d="m 166.96621,441.92473 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76436,9.89113 13.82541,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04143,-13.26923 -18.04143,-13.26923 0,0 4.07634,-7.94084 17.47319,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17531,18.29907 -13.17531,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
          style="opacity:0.303;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8853755;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4186)" />
       <path
          sodipodi:nodetypes="ccccccccccccc"
          inkscape:connector-curvature="0"
          id="path4157"
-         d="m 146.28395,445.48835 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76437,9.89113 13.82542,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04144,-13.26923 -18.04144,-13.26923 0,0 4.07635,-7.94084 17.4732,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17532,18.29907 -13.17532,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
-         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8853755;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         d="m 164.05979,435.91674 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76437,9.89113 13.82542,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04144,-13.26923 -18.04144,-13.26923 0,0 4.07635,-7.94084 17.4732,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17532,18.29907 -13.17532,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#1e6b34;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.75" />
     </g>
     <g
-       id="g4190-3"
-       transform="matrix(0.9953876,-0.09593501,0.09593501,0.9953876,45.459652,78.249314)">
+       transform="matrix(1.3398249,0.08616613,-0.08616613,1.3398249,38.79108,-90.368975)"
+       id="g4285-1"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/icon-120"
+       inkscape:export-xdpi="54"
+       inkscape:export-ydpi="54">
       <path
          sodipodi:nodetypes="ccccccccccccc"
          inkscape:connector-curvature="0"
-         id="path4157-5-2"
-         d="m 149.19037,451.49634 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76436,9.89113 13.82541,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04143,-13.26923 -18.04143,-13.26923 0,0 4.07634,-7.94084 17.47319,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17531,18.29907 -13.17531,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
-         style="opacity:0.303;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8853755;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4186-1)" />
+         id="path4157-5-3"
+         d="m 166.96621,441.92473 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76436,9.89113 13.82541,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04143,-13.26923 -18.04143,-13.26923 0,0 4.07634,-7.94084 17.47319,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17531,18.29907 -13.17531,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="opacity:0.303;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8853755;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4186-8)" />
+      <path
+         sodipodi:nodetypes="ccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4157-4"
+         d="m 164.05979,435.91674 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76437,9.89113 13.82542,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04144,-13.26923 -18.04144,-13.26923 0,0 4.07635,-7.94084 17.4732,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17532,18.29907 -13.17532,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#1e6b34;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.75" />
+    </g>
+    <g
+       transform="translate(233.6263,-7.6606353)"
+       id="g4285-3"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/icon-120"
+       inkscape:export-xdpi="54"
+       inkscape:export-ydpi="54">
+      <path
+         sodipodi:nodetypes="ccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4157-5-8"
+         d="m 166.96621,441.92473 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76436,9.89113 13.82541,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04143,-13.26923 -18.04143,-13.26923 0,0 4.07634,-7.94084 17.47319,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17531,18.29907 -13.17531,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="opacity:0.303;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8853755;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4186-4)" />
       <path
          sodipodi:nodetypes="ccccccccccccc"
          inkscape:connector-curvature="0"
          id="path4157-3"
-         d="m 146.28395,445.48835 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76437,9.89113 13.82542,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04144,-13.26923 -18.04144,-13.26923 0,0 4.07635,-7.94084 17.4732,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17532,18.29907 -13.17532,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
-         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8853755;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         d="m 164.05979,435.91674 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76437,9.89113 13.82542,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04144,-13.26923 -18.04144,-13.26923 0,0 4.07635,-7.94084 17.4732,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17532,18.29907 -13.17532,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#1e6b34;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.75" />
     </g>
+    <g
+       transform="matrix(1.3398249,0.08616613,-0.08616613,1.3398249,272.41738,-98.029615)"
+       id="g4285-1-3"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/icon-120"
+       inkscape:export-xdpi="54"
+       inkscape:export-ydpi="54">
+      <path
+         sodipodi:nodetypes="ccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4157-5-3-4"
+         d="m 166.96621,441.92473 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76436,9.89113 13.82541,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04143,-13.26923 -18.04143,-13.26923 0,0 4.07634,-7.94084 17.47319,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17531,18.29907 -13.17531,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="opacity:0.303;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8853755;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4186-8-3)" />
+      <path
+         sodipodi:nodetypes="ccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4157-4-5"
+         d="m 164.05979,435.91674 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76437,9.89113 13.82542,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04144,-13.26923 -18.04144,-13.26923 0,0 4.07635,-7.94084 17.4732,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17532,18.29907 -13.17532,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#1e6b34;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.75" />
+    </g>
+    <g
+       transform="matrix(5.398348,0.36311682,-0.34717578,5.6462203,257.06961,-2202.8473)"
+       id="g4285-1-3-3"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/splash-640-1136.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         sodipodi:nodetypes="ccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4157-5-3-4-7"
+         d="m 166.96621,441.92473 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76436,9.89113 13.82541,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04143,-13.26923 -18.04143,-13.26923 0,0 4.07634,-7.94084 17.47319,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17531,18.29907 -13.17531,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="opacity:0.303;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8853755;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4186-8-3-0)" />
+      <path
+         sodipodi:nodetypes="ccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4157-4-5-3"
+         d="m 164.05979,435.91674 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76437,9.89113 13.82542,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04144,-13.26923 -18.04144,-13.26923 0,0 4.07635,-7.94084 17.4732,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17532,18.29907 -13.17532,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#1e6b34;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.75" />
+    </g>
+    <g
+       transform="matrix(5.398348,0.36311682,-0.34717578,5.6462203,453.02363,-1834.1442)"
+       id="g4285-1-3-3-4"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/splash-640-1136.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         sodipodi:nodetypes="ccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4157-5-3-4-7-4"
+         d="m 166.96621,441.92473 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76436,9.89113 13.82541,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04143,-13.26923 -18.04143,-13.26923 0,0 4.07634,-7.94084 17.47319,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17531,18.29907 -13.17531,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="opacity:0.303;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8853755;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4186-8-3-0-9)" />
+      <path
+         sodipodi:nodetypes="ccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4157-4-5-3-4"
+         d="m 164.05979,435.91674 c 0,0 7.31962,2.05126 10.97944,12.44336 2.83394,-7.47131 17.5671,-19.76299 17.5671,-19.76299 0,0 11.76437,9.89113 13.82542,19.68113 0,0 4.93111,-10.81571 13.17533,-13.90729 -7.21369,-2.31868 -18.04144,-13.26923 -18.04144,-13.26923 0,0 4.07635,-7.94084 17.4732,-14.38162 -10.30526,-4.12211 -13.25719,-13.98916 -13.25719,-13.98916 0,8.24422 -13.17532,18.29907 -13.17532,18.29907 0,0 -10.68088,-10.61105 -11.7114,-17.5671 -0.7729,8.50184 -12.44337,13.17532 -12.44337,13.17532 8.50185,1.80342 15.62885,13.05253 15.62885,13.05253 0,0 -11.77642,12.10387 -20.02062,16.22598 z"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#1e6b34;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.75" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:62.69738388px;line-height:125%;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, Heavy';letter-spacing:0px;word-spacing:0px;fill:#75e77e;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.75"
+       id="text4478"
+       sodipodi:linespacing="125%"
+       transform="translate(-45.952167,-54.70496)"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/splash-640-1136.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><textPath
+         xlink:href="#path4505"
+         id="textPath4507"><tspan
+   style="fill:#75e77e;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.75"
+   id="tspan4480">Five In A Row</tspan></textPath></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1066.7467,938.57589 c 0,0 227.5727,-52.51676 448.5807,6.56459"
+       id="path4505"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/splash-640-1136.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:69.75250244px;line-height:125%;font-family:Impact;-inkscape-font-specification:'Impact Condensed';letter-spacing:0px;word-spacing:0px;fill:#ad7474;fill-opacity:1;stroke:#ffffff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.75"
+       x="1200.1287"
+       y="895.68024"
+       id="text4510"
+       sodipodi:linespacing="125%"
+       transform="scale(0.89924477,1.1120443)"
+       inkscape:export-filename="/Users/johankarlsson/Projects/TinyRowGame/art/output/splash-640-1136.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan4512"
+         x="1200.1287"
+         y="895.68024"
+         style="fill:#ad7474;fill-opacity:1;stroke:#ffffff;stroke-opacity:0.75">ON STEROIDS</tspan></text>
   </g>
 </svg>
