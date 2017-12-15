@@ -4,7 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:control="clr-namespace:tinyrowgame.Controls"
     xmlns:local="clr-namespace:tinyrowgame"
+    xmlns:views="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
     BackgroundColor="#cccccc"
-    x:Class="tinyrowgame.tinyrowgamePage">
-    <control:GridControl />
+    x:Class="tinyrowgame.tinyrowgamePage" Padding="10,30,10,10">
+    <Grid>
+        <views:SKCanvasView x:Name="canvas" PaintSurface="OnCanvasPaint" />
+        <control:GridControl />
+    </Grid>
 </ContentPage>
