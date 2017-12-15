@@ -1,0 +1,14 @@
+{
+  "name": "telnet-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node 5.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^3.3.2"
+  }
+}
