@@ -36,7 +36,7 @@ const gameEngine = function () {
     socket.send(JSON.stringify(pos));
   }
 
-  var socket = new WebSocket("ws://10.10.10.181:8001");
+  var socket = new WebSocket("ws://localhost:5000/ws");
   socket.onopen = function () {
     console.log('open');
     socket.onmessage = function (msg) {

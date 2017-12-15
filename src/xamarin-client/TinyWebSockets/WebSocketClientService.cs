@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace TinyWebSockets
 {
-    public class WebSocketService
+    public class WebSocketClientService : ISocketService
     {
         private ClientWebSocket client = new ClientWebSocket();
         private CancellationTokenSource cancelConnectSource = new CancellationTokenSource();
@@ -20,9 +20,9 @@ namespace TinyWebSockets
         private const int BUFFER_SIZE = 1024 * 32;
         private byte[] messageBuffer = new byte[BUFFER_SIZE];
         private SemaphoreSlim sendLock = new SemaphoreSlim(1);
-        private List<IMessage> sendQueue = new List<IMessage>();
+        private List<string> sendQueue = new List<string>();
 
-        public event EventHandler<JToken> MessageReceived;
+        public event EventHandler<string> MessageReceived;
         public event EventHandler<Uri> Connected;
         public event EventHandler<Exception> OnError;
 
@@ -65,7 +65,7 @@ namespace TinyWebSockets
         }
 
 
-        public void QueueAction(IMessage action)
+        public void QueueAction(string action)
         {
             var triggerSend = !sendQueue.Any();
             sendQueue.Add(action);
@@ -97,12 +97,12 @@ namespace TinyWebSockets
             {
                 _isSending = true;
 
-                if (string.IsNullOrEmpty(action.Type) && action is BaseMessage basemsg)
-                {
-                    PopulateType(basemsg);
-                }
+                //if (string.IsNullOrEmpty(action.Type) && action is BaseMessage basemsg)
+                //{
+                //    PopulateType(basemsg);
+                //}
 
-                var sendBuffer = System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(action));
+                var sendBuffer = System.Text.Encoding.UTF8.GetBytes(action);
                 var sendSegment = new ArraySegment<byte>(sendBuffer);
 
                 try
@@ -122,15 +122,7 @@ namespace TinyWebSockets
             }
         }
 
-        private void PopulateType(BaseMessage action)
-        {
-            var msgAttr = action.GetType().GetCustomAttributes(typeof(MessageAttribute), true).OfType<MessageAttribute>().FirstOrDefault();
 
-            if (msgAttr != null)
-            {
-				action.Type = msgAttr.TypeName;
-            }
-        }
 
         public async Task StartReceivingMessages()
         {
@@ -178,15 +170,9 @@ namespace TinyWebSockets
                 }
 
                 var message = System.Text.Encoding.UTF8.GetString(messageBuffer, 0, count);
-
-
-
                     
-                MessageReceived?.Invoke(this, JToken.Parse(message));
+                MessageReceived?.Invoke(this, message);
                     
-
-
-                
                 if (client.State == WebSocketState.Open)
                 {
                     await StartReceivingMessages();

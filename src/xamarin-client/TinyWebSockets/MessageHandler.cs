@@ -4,12 +4,14 @@ using System.Linq;
 using TinyWebSockets.Interfaces;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace TinyWebSockets
 {
     public abstract class BaseMessage : IMessage
     {
-        [Newtonsoft.Json.JsonProperty("type")] 
+        [Newtonsoft.Json.JsonProperty("type")]
         public string Type { get; set; }
     }
 
@@ -18,56 +20,30 @@ namespace TinyWebSockets
     /// </summary>
     public class MessageHandler
     {
-        private readonly WebSocketService webSocketService;
-		private readonly List<IMessageReceiver> _receivers = new List<IMessageReceiver>();
+        private readonly ISocketService webSocketService;
+        private readonly List<IMessageReceiver> _receivers = new List<IMessageReceiver>();
 
         private const string TypePropertyName = "type";
 
         public event EventHandler<Exception> OnError;
         public Dictionary<string, Type> ActionTypes { get; private set; }
 
-        public MessageHandler(WebSocketService webSocketService)
+        public MessageHandler(ISocketService webSocketService)
         {
             this.webSocketService = webSocketService;
 
             this.webSocketService.OnError += (sender, e) => OnError?.Invoke(sender, e);
-            this.webSocketService.MessageReceived += WebSocketService_MessageRecieved;
-            webSocketService.Connected += async (object sender, Uri uri) => await webSocketService.StartReceivingMessages();
-            PopulateActions();
+            this.webSocketService.MessageReceived += ParseAndHandleMessage;
 
-        }
-
-        public void RegisterActionReceiver(IMessageReceiver receiver) 
-        {
-            _receivers.Add(receiver);
-            receiver.SetStateService(this);
-        }
-
-        public Type GetTypeFromJObject(JToken obj) 
-        {
-            var type = obj?.Value<String>();
-            Type ret = null;
-
-            if (type==null || ActionTypes.ContainsKey(type)) 
-            {
-                ret = ActionTypes[type];
-            }
-
-            return ret;
-        }
-
-        public void SendMessage(IMessage obj)
-        {
-            webSocketService.QueueAction(obj);
         }
 
         /// <summary>
         /// Message received over websockets and converted to IAction here
         /// </summary>
-        /// <param name="message">Message.</param>
-        private void WebSocketService_MessageRecieved(object sender, JToken message)
+        /// <param name="data">Message as string.</param>
+        private void ParseAndHandleMessage(object sender, string data)
         {
-            // find the node
+            var message = JToken.Parse(data);
             var returnType = GetTypeFromJObject(message[TypePropertyName]);
             if (returnType != null)
             {
@@ -79,6 +55,48 @@ namespace TinyWebSockets
                     SendActionToInternalReceivers(action);
                 }
             }
+
+        }
+
+        public void RegisterActionReceiver(IMessageReceiver receiver)
+        {
+            _receivers.Add(receiver);
+            receiver.SetStateService(this);
+        }
+
+        public Type GetTypeFromJObject(JToken obj)
+        {
+            var type = obj?.Value<String>();
+            Type ret = null;
+
+            if (type == null || ActionTypes.ContainsKey(type))
+            {
+                ret = ActionTypes[type];
+            }
+
+            return ret;
+        }
+
+        /// <summary>
+        /// Sends message
+        /// </summary>
+        /// <param name="obj">Object.</param>
+        public void SendMessage(IMessage obj)
+        {
+            if (string.IsNullOrEmpty(obj.Type) && obj is BaseMessage baseMsg) {
+                PopulateType(baseMsg);
+            }
+            webSocketService.QueueAction(JsonConvert.SerializeObject(obj));
+        }
+
+        private void PopulateType(BaseMessage action)
+        {
+            var msgAttr = action.GetType().GetCustomAttributes(typeof(MessageAttribute), true).OfType<MessageAttribute>().FirstOrDefault();
+
+            if (msgAttr != null)
+            {
+                action.Type = msgAttr.TypeName;
+            }
         }
 
         /// <summary>
@@ -88,9 +106,9 @@ namespace TinyWebSockets
         /// <param name="excluded">Excluded.</param>
         public void SendActionToInternalReceivers(IMessage action, params IMessageReceiver[] excluded)
         {
-            foreach(var rec in _receivers) 
+            foreach (var rec in _receivers)
             {
-                if (rec != null && rec.IsActive && !excluded.Contains(rec)) 
+                if (rec != null && rec.IsActive && !excluded.Contains(rec))
                 {
                     rec.HandleAction(action);
                 }
