@@ -5,6 +5,7 @@ class TelnetConnection extends EventEmitter {
   constructor (socket) {
     super();
     this.socket = socket;
+    this.active = false;
     this.width = 80;
     this.height = 25;
     this._init();
@@ -17,6 +18,7 @@ class TelnetConnection extends EventEmitter {
   }
 
   start() {
+    this.active = true;
     console.log('TelnetConnection: Sending telnet handshake');
     this.socket.write(new Buffer([
       0xff, 0xfd, 0x18,
@@ -30,6 +32,7 @@ class TelnetConnection extends EventEmitter {
       this.socket.write('\x1b[?1005h');
       this.socket.write('\x1b[?1003h');
       this.socket.write('\x1b[?1000h'); // enable mouse
+      this.socket.write('\x1b[2J'); // clear screen
       this.emit('started');
     });
   }
@@ -64,7 +67,9 @@ class TelnetConnection extends EventEmitter {
 
   close() {
     console.log('TelnetConnection: Closing connection');
+    this.active = false;
     this.socket.write('\x1b[?1000l'); // disable mouse
+    this.socket.write('\x1b[?25h'); // show cursor
     this.socket.end('\r\n');
     // this.socket = null;
   }
