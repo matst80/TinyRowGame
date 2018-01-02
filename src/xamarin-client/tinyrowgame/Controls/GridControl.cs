@@ -27,8 +27,8 @@ namespace tinyrowgame.Controls
             Service.MessageHandler.RegisterActionReceiver(this);
 
             Task.Run(async () => { 
-                //await Service.SocketService.StartListening(new Uri("ws://localhost:5000/ws"));
-                await Service.SocketService.StartListening(new Uri("ws://fw.knatofs.se:8001"));
+                await Service.SocketService.StartListening(new Uri("ws://localhost:5000/ws"));
+                //await Service.SocketService.StartListening(new Uri("ws://fw.knatofs.se:8001"));
             });
         }
 
@@ -98,7 +98,7 @@ namespace tinyrowgame.Controls
         private void UpdateGrid(IList<Pos> grid)
         {
             NormalizeGrid(grid);
-
+            var cells = Children.OfType<Cell>().ToList();
             foreach (Pos p in grid)
             {
                 var existing = Children.FirstOrDefault(d => d.Match(p));
@@ -114,7 +114,12 @@ namespace tinyrowgame.Controls
                     }
                 }
                 existing.Update(p);
+                cells.Contains(existing);
+                cells.Remove(existing);
+            }
 
+            foreach(var removedCell in cells) {
+                removedCell.Reset();
             }
 
             for (var y = 0; y < RowCount; y++)

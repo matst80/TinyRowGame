@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace tinyrowgame.Controls
 {
-    public class Cell :  Layout<SKCanvasView>  //Layout<View>
+    public class Cell : Layout<View>
     {
         readonly CellPosition _cellpos;
         Label _label = new Label()
@@ -31,7 +31,7 @@ namespace tinyrowgame.Controls
 
         public void PlaceInGrid(double v)
         {
-            this.Layout(new Rectangle(CellData.RealX*v,CellData.RealY*v,v,v));
+            this.Layout(new Rectangle(CellData.RealX * v, CellData.RealY * v, v, v));
         }
 
         public CellPosition CellData => _cellpos;
@@ -39,7 +39,7 @@ namespace tinyrowgame.Controls
         protected override void OnParentSet()
         {
             base.OnParentSet();
-           // Children.Add(_label);
+            Children.Add(_label);
             _label.FadeTo(1);
         }
 
@@ -55,11 +55,12 @@ namespace tinyrowgame.Controls
 
         internal void Update(Pos p)
         {
-            if (p.Value!=CellData.Value) {
+            if (p.Value != CellData.Value)
+            {
                 BackgroundColor = DEFAULT_COLORS[p.Value % DEFAULT_COLORS.Length];
                 _label.Text = p.Value.ToString();
                 //this.ColorTo(BackgroundColor, DEFAULT_COLORS[p.Value % DEFAULT_COLORS.Length],(_) => {
-                    
+
                 //},350, Easing.CubicInOut);
             }
             CellData.GridPosition = p;
@@ -68,6 +69,17 @@ namespace tinyrowgame.Controls
         internal bool Match(int x, int y)
         {
             return (x == CellData.RealX && y == CellData.RealY);
+        }
+
+        internal void Reset()
+        {
+
+            BackgroundColor = DEFAULT_COLORS[0];
+            _label.Text = "0";
+            //this.ColorTo(BackgroundColor, DEFAULT_COLORS[p.Value % DEFAULT_COLORS.Length],(_) => {
+
+            //},350, Easing.CubicInOut);
+
         }
     }
 }

@@ -196,5 +196,13 @@ namespace TinyWebSockets
             //Logger.Instance.LogInfo("Reconnecting after delay");
             await StartListening();
         });
+
+        public void Disconnect()
+        {
+            cancelSendSource.Cancel();
+            cancelMessageSource.Cancel();
+            cancelConnectSource.Cancel();
+            client.Dispose();
+        }
     }
 }

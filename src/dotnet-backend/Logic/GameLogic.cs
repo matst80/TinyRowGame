@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using dotnetbackend.Contracts;
 using TinyRowMessages.SocketCommands;
 
@@ -34,24 +36,53 @@ namespace dotnetbackend.Logic
             OnUserAdded?.Invoke(this, addedUserNr);
             OnUsersChange?.Invoke(this, users);
 
-            if (currentUser == -1)
+            if (currentUser == -1 || users.Contains(currentUser))
                 SetNextUser();
 
             return addedUserNr;
         }
 
-        private void SetNextUser()
+        private Task changeUserTask;
+        private CancellationTokenSource userChangeToken = new CancellationTokenSource();
+
+        private void SetNextUser(bool isTurnBased = true)
         {
             if (currentUser == -1)
                 currentUser = users.FirstOrDefault();
             else
             {
-                var idx = users.IndexOf(currentUser);
-                if (++idx > users.Count())
+                if (!users.Any())
                 {
-                    idx = 0;
+                    currentUser = -1;
+                    return;
                 }
-                currentUser = users[idx];
+                var idx = 0;
+                if (users.Contains(currentUser))
+                {
+                    idx = users.IndexOf(currentUser);
+                    if (++idx >= users.Count())
+                    {
+                        idx = 0;
+                    }
+                }
+                try
+                {
+                    currentUser = users[idx];
+                }
+                catch (Exception ex)
+                {
+                    currentUser = -1;
+                }
+                if (isTurnBased && changeUserTask != null && !changeUserTask.IsCompleted)
+                {
+                    userChangeToken.Cancel();
+                }
+
+                changeUserTask = Task.Delay(5000, userChangeToken.Token).ContinueWith((a) =>
+                 {
+                     SetNextUser(false);
+                 });
+
             }
             OnTurnChange?.Invoke(this, currentUser);
         }

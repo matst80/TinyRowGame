@@ -21,6 +21,7 @@ namespace dotnet_backend
         private int UserNumber;
         private MessageHandler sockeMessageHandler;
         public bool Connected = false;
+        private readonly GameSocketServer socketGame;
 
         public GameUserHandler(WebSocket webSocket, GameLogic game)
         {
@@ -28,15 +29,16 @@ namespace dotnet_backend
             this.game = game;
             Connected = true;
 
-            var socketGame = new GameSocketServer(webSocket);
+            this.socketGame = new GameSocketServer(webSocket);
             this.sockeMessageHandler = new MessageHandler(socketGame);
             var initMessage = new Init();
             sockeMessageHandler.PopulateActions(initMessage);
             sockeMessageHandler.RegisterActionReceiver(this);
-
+          
             socketGame.OnDisconnect += SocketGame_OnDisconnect;
             socketGame.OnError += (sender, e) => {
                 var i = 3;
+                socketGame.Disconnect();
             };
 
             game.OnWinner += Game_OnWinner;
@@ -62,6 +64,8 @@ namespace dotnet_backend
         void SocketGame_OnDisconnect(object sender, System.EventArgs e)
         {
             //TODO Remove eventhandlers
+            game.RemoveUser(UserNumber);
+
             game.OnWinner -= Game_OnWinner;
 
             game.OnTurnChange -= Game_OnTurnChange;
@@ -70,6 +74,11 @@ namespace dotnet_backend
 
             game.OnGridChange -= Game_OnGridChange;
             Connected = false;
+        }
+
+        internal async Task HandleRequest(HttpContext context, WebSocket webSocket)
+        {
+            await socketGame.HandleSocketAsync(webSocket);
         }
 
         void Game_OnGridChange(object sender, GameGrid e)
@@ -82,17 +91,6 @@ namespace dotnet_backend
             sockeMessageHandler.SendMessage(new UserList()
             {
                 Users = e
-            });
-        }
-
-        internal async Task HandleRequest(HttpContext context, WebSocket webSocket)
-        {
-            await Task.Run(() =>
-            {
-                while (Connected)
-                {
-                    Task.Delay(100);
-                }
             });
         }
 
