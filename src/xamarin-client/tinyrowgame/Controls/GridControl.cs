@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using tinyrowgame.SocketCommands;
 using TinyWebSockets;
 using TinyWebSockets.Interfaces;
@@ -23,6 +24,10 @@ namespace tinyrowgame.Controls
             base.OnParentSet();
             Service.MessageHandler.PopulateActions(new Init());
             Service.MessageHandler.RegisterActionReceiver(this);
+
+            Task.Run(async () => { 
+                await Service.SocketService.StartListening(new Uri("ws://10.10.10.181:5000/ws"));
+            });
         }
 
         protected override void LayoutChildren(double x, double y, double width, double height)

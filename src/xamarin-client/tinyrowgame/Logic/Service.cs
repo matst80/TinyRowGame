@@ -16,6 +16,7 @@ namespace tinyrowgame
                 if (_socketService == null)
                 {
                     _socketService = new WebSocketClientService();
+                    _socketService.Connected += async (sender, e) => await Service.SocketService.StartReceivingMessages(); 
                 }
                 return _socketService;
             }

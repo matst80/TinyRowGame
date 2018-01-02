@@ -12,7 +12,6 @@ namespace tinyrowgame
 
             MainPage = new tinyrowgamePage();
 
-            Task.Run(async () => await Service.SocketService.StartListening(new Uri("ws://fw.knatofs.se:8001")));
 
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using tinyrowgame.SocketCommands;
@@ -14,6 +15,8 @@ namespace tinyrowgame
         internal void Appear()
         {
             Service.MessageHandler.PopulateActions(this);
+           
+
         }
     }
 
