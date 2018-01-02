@@ -13,18 +13,12 @@ namespace tinyrowgame
     {
         internal void Appear()
         {
-<<<<<<< HEAD
-            //Service.MessageHandler.PopulateActions(this);
-           
             Service.MessageHandler.RegisterActionReceiver(this);
         }
 
         public void SetStateService(MessageHandler stateService)
         {
             //throw new NotImplementedException();
-=======
-            Service.MessageHandler.PopulateActions(this);
->>>>>>> 4e03df1b4f9bdc653df14f66893ba55f2150d4b3
         }
 
         public void HandleAction(IMessage action)
