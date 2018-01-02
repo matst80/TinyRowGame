@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using tinyrowgame.SocketCommands;
 using TinyWebSockets;
 using TinyWebSockets.Interfaces;
+using TinyRowMessages.SocketCommands;
+
 using Xamarin.Forms;
 
 namespace tinyrowgame.Controls
@@ -26,6 +27,7 @@ namespace tinyrowgame.Controls
             Service.MessageHandler.RegisterActionReceiver(this);
 
             Task.Run(async () => { 
+                //await Service.SocketService.StartListening(new Uri("ws://localhost:5000/ws"));
                 await Service.SocketService.StartListening(new Uri("ws://fw.knatofs.se:8001"));
             });
         }

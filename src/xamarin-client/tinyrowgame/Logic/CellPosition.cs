@@ -1,5 +1,5 @@
 ﻿using System;
-using tinyrowgame.SocketCommands;
+using TinyRowMessages.SocketCommands;
 using Xamarin.Forms;
 
 namespace tinyrowgame.Logic

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using SkiaSharp.Views.Forms;
+using TinyRowMessages.SocketCommands;
 using tinyrowgame.Extensions;
 using tinyrowgame.Logic;
-using tinyrowgame.SocketCommands;
 using Xamarin.Forms;
 
 namespace tinyrowgame.Controls
