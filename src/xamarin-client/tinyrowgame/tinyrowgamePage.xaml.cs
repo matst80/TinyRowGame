@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
-using tinyrowgame.SocketCommands;
 using TinyWebSockets;
 using TinyWebSockets.Interfaces;
 using Xamarin.Forms;
@@ -15,8 +14,6 @@ namespace tinyrowgame
         internal void Appear()
         {
             Service.MessageHandler.PopulateActions(this);
-           
-
         }
     }
 

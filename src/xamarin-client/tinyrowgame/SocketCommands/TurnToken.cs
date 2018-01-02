@@ -3,7 +3,7 @@
 namespace tinyrowgame.SocketCommands
 {
     [Message("turn")]
-    public class TurnToken
+    public class TurnToken : BaseMessage
     {
 
     }

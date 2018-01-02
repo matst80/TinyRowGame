@@ -19,23 +19,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)tinyrowgamePage.xaml.cs">
       <DependentUpon>tinyrowgamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\Init.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logic\Service.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\Pos.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\User.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\UserList.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\Winner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\OtherUserTurn.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\GridPositions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\TurnToken.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\GridControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Cell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logic\CellPosition.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SocketCommands\PlaceMarker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ViewExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)SocketCommands\" />
     <Folder Include="$(MSBuildThisFileDirectory)Logic\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
     <Folder Include="$(MSBuildThisFileDirectory)Extensions\" />
