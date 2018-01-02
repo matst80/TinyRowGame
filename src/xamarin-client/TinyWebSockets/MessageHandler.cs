@@ -29,7 +29,6 @@ namespace TinyWebSockets
 
             this.webSocketService.OnError += (sender, e) => OnError?.Invoke(sender, e);
             this.webSocketService.MessageReceived += ParseAndHandleMessage;
-
         }
 
         /// <summary>

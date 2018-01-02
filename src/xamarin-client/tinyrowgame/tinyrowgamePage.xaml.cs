@@ -10,14 +10,28 @@ using Xamarin.Forms;
 namespace tinyrowgame
 {
     [PropertyChanged.AddINotifyPropertyChangedInterface]
-    public class tinyrowgamePageContext 
+    public class tinyrowgamePageContext : IMessageReceiver
     {
         internal void Appear()
         {
-            Service.MessageHandler.PopulateActions(this);
+            //Service.MessageHandler.PopulateActions(this);
            
-
+            Service.MessageHandler.RegisterActionReceiver(this);
         }
+
+        public void SetStateService(MessageHandler stateService)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void HandleAction(IMessage action)
+        {
+            Status = action.Type;
+        }
+
+        public string Status { get; set; }
+
+        public bool IsActive => true;
     }
 
     public partial class tinyrowgamePage : ContentPage

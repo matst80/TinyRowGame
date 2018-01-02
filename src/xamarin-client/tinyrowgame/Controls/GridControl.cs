@@ -26,7 +26,7 @@ namespace tinyrowgame.Controls
             Service.MessageHandler.RegisterActionReceiver(this);
 
             Task.Run(async () => { 
-                await Service.SocketService.StartListening(new Uri("ws://10.10.10.181:5000/ws"));
+                await Service.SocketService.StartListening(new Uri("ws://fw.knatofs.se:8001"));
             });
         }
 
