@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace tinyrowgame
 {
@@ -9,6 +11,9 @@ namespace tinyrowgame
             InitializeComponent();
 
             MainPage = new tinyrowgamePage();
+
+            Task.Run(async () => await Service.SocketService.StartListening(new Uri("ws://fw.knatofs.se:8001")));
+
         }
 
         protected override void OnStart()

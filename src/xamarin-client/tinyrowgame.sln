@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tinyrowgame.Droid", "Droid\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyWebSockets", "TinyWebSockets\TinyWebSockets.csproj", "{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyRowMessages", "..\dotnet-backend\TinyRowMessages\TinyRowMessages.csproj", "{6251444B-8875-4BBC-9427-1D5DC57FE52A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -55,5 +57,17 @@ Global
 		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Release|iPhone.Build.0 = Release|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6251444B-8875-4BBC-9427-1D5DC57FE52A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

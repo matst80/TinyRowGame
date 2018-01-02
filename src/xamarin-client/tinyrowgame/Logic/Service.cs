@@ -6,19 +6,16 @@ namespace tinyrowgame
 {
     public static class Service
     {
-        public static WebSocketService _socketService;
+        public static WebSocketClientService _socketService;
         public static MessageHandler _messageHandler;
 
-        private static Uri serverUrl = new Uri("ws://fw.knatofs.se:8001");
-
-        public static WebSocketService SocketService
+        public static WebSocketClientService SocketService
         {
             get
             {
                 if (_socketService == null)
                 {
-                    _socketService = new WebSocketService();
-                    Task.Run(async () => await _socketService.StartListening(serverUrl));
+                    _socketService = new WebSocketClientService();
                 }
                 return _socketService;
             }

@@ -21,6 +21,7 @@ namespace tinyrowgame.Controls
         protected override void OnParentSet()
         {
             base.OnParentSet();
+            Service.MessageHandler.PopulateActions(new Init());
             Service.MessageHandler.RegisterActionReceiver(this);
         }
 
@@ -37,7 +38,6 @@ namespace tinyrowgame.Controls
         {
             _messageHandler = stateService;
         }
-
 
         public void HandleAction(IMessage action)
         {

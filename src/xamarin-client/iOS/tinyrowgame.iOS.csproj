@@ -147,6 +147,10 @@
       <Project>{ED4E43FD-3DCD-41D3-8D92-F0E85738AC57}</Project>
       <Name>TinyWebSockets</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\dotnet-backend\TinyRowMessages\TinyRowMessages.csproj">
+      <Project>{6251444B-8875-4BBC-9427-1D5DC57FE52A}</Project>
+      <Name>TinyRowMessages</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\tinyrowgame\tinyrowgame.projitems" Label="Shared" Condition="Exists('..\tinyrowgame\tinyrowgame.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
