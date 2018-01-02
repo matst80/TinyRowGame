@@ -23,6 +23,11 @@ namespace tinyrowgame
 
         public void HandleAction(IMessage action)
         {
+            if (action.Type == "grid")
+            {
+                return;
+            }
+
             Status = action.Type;
         }
 
