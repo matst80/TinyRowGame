@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-backend", "dotnet-backend.csproj", "{F1F7F852-7614-4C97-A7C8-9A30B80B7709}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyRowMessages", "TinyRowMessages\TinyRowMessages.csproj", "{627B4DEC-E5A4-45A0-B1CB-3CE3C1241BEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyWebSockets", "..\xamarin-client\TinyWebSockets\TinyWebSockets.csproj", "{C073CBB9-C5E6-476F-83AD-3704974376F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1F7F852-7614-4C97-A7C8-9A30B80B7709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F7F852-7614-4C97-A7C8-9A30B80B7709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F7F852-7614-4C97-A7C8-9A30B80B7709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F7F852-7614-4C97-A7C8-9A30B80B7709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{627B4DEC-E5A4-45A0-B1CB-3CE3C1241BEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{627B4DEC-E5A4-45A0-B1CB-3CE3C1241BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{627B4DEC-E5A4-45A0-B1CB-3CE3C1241BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{627B4DEC-E5A4-45A0-B1CB-3CE3C1241BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C073CBB9-C5E6-476F-83AD-3704974376F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C073CBB9-C5E6-476F-83AD-3704974376F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C073CBB9-C5E6-476F-83AD-3704974376F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C073CBB9-C5E6-476F-83AD-3704974376F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

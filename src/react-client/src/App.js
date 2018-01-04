@@ -36,7 +36,7 @@ const gameEngine = function () {
     socket.send(JSON.stringify(pos));
   }
 
-  var socket = new WebSocket("ws://localhost:5000/ws");
+  var socket = new WebSocket("ws://fw.knatofs.se:8001");
   socket.onopen = function () {
     console.log('open');
     socket.onmessage = function (msg) {

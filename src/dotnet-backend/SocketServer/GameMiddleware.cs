@@ -11,15 +11,12 @@ namespace dotnet_backend
 
     public static class GameMiddlewareExtensions
     {
-       
-
         public static IApplicationBuilder UseWebSockets(this IApplicationBuilder app, GameLogic game)
         {
             if (app == null)
             {
                 throw new ArgumentNullException(nameof(app));
             }
-
             return app.UseMiddleware<GameMiddleware>(game);
         }
     }
