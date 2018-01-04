@@ -50,7 +50,7 @@ namespace dotnetbackend.Contracts
         public IList<GamePosition> AddPoint(GamePosition v)
         {
             var ret = new List<GamePosition>();
-            if (FindPoint(v) != null)
+            if (FindPoint(v) == null)
             {
                 Points.Add(v);
                 MeasureLength(v, ret);

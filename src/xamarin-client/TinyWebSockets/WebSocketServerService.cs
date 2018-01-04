@@ -17,8 +17,11 @@ namespace TinyWebSockets
         public WebSocketServerService(WebSocket webSocket)
         {
             _webSocket = webSocket;
-            Task.Run(async () => await HandleSocketAsync(webSocket));
+            //Task.Run(async () => await HandleSocketAsync(webSocket));
         }
+
+
+        private CancellationTokenSource tokenSource = new CancellationTokenSource();
 
         public event EventHandler<string> MessageReceived;
         public event EventHandler<Exception> OnError;
@@ -30,24 +33,20 @@ namespace TinyWebSockets
         public async Task HandleSocketAsync(WebSocket webSocket)
         {
             var segment = new ArraySegment<byte>(messageBuffer);
-            var result = await webSocket.ReceiveAsync(segment, CancellationToken.None);
+            var result = await webSocket.ReceiveAsync(segment, tokenSource.Token);
             int count = result.Count;
 
             while (!result.EndOfMessage && !result.CloseStatus.HasValue)
             {
                 segment = new ArraySegment<byte>(messageBuffer, count, messageBuffer.Length - count);
-                result = await webSocket.ReceiveAsync(segment, CancellationToken.None);
+                result = await webSocket.ReceiveAsync(segment, tokenSource.Token);
                 count += result.Count;
             }
 
             var message = System.Text.Encoding.UTF8.GetString(messageBuffer, 0, count);
             MessageReceived?.Invoke(this, message);
 
-            while (!result.CloseStatus.HasValue)
-            {
-                await HandleSocketAsync(webSocket);
-            }
-            OnDisconnect?.Invoke(this, new EventArgs());
+
         }
 
         public void QueueAction(string action)
@@ -66,6 +65,8 @@ namespace TinyWebSockets
         private async Task SendFromQueue()
         {
             var action = sendQueue.FirstOrDefault();
+            if (tokenSource.Token.IsCancellationRequested)
+                return;
             if (action != null && !_isSending)
             {
                 _isSending = true;
@@ -75,7 +76,7 @@ namespace TinyWebSockets
 
                 try
                 {
-                    await _webSocket.SendAsync(sendSegment, WebSocketMessageType.Text, true, CancellationToken.None);
+                    await _webSocket.SendAsync(sendSegment, WebSocketMessageType.Text, true, tokenSource.Token);
                     sendQueue.Remove(action);
                 }
                 catch (Exception ex)
@@ -88,6 +89,13 @@ namespace TinyWebSockets
 
                 await Task.Run(() => SendFromQueue());
             }
+        }
+
+        public void Disconnect()
+        {
+            tokenSource.Cancel();
+            OnDisconnect?.Invoke(this, new EventArgs());
+            _webSocket.Dispose();
         }
     }
 }

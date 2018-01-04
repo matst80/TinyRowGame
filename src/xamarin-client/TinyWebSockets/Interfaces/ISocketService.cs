@@ -8,5 +8,6 @@ namespace TinyWebSockets.Interfaces
         event EventHandler<string> MessageReceived;
         event EventHandler<Exception> OnError;
         void QueueAction(string jsonMessageString);
+        void Disconnect();
     }
 }
