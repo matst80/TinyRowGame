@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace tinyrowgame.Controls
 {
-    public class Cell :  Layout<SKCanvasView>  //Layout<View>
+    public class Cell :   Layout<View> //Layout<SKCanvasView> 
     {
         readonly CellPosition _cellpos;
         Label _label = new Label()
@@ -25,7 +25,7 @@ namespace tinyrowgame.Controls
             this._cellpos = cellpos;
             _label.Text = cellpos.Value.ToString();
             BackgroundColor = DEFAULT_COLORS[cellpos.Value];
-            _label.Opacity = 0;
+            _label.Opacity = 1;
 
         }
 
@@ -39,7 +39,7 @@ namespace tinyrowgame.Controls
         protected override void OnParentSet()
         {
             base.OnParentSet();
-           // Children.Add(_label);
+            Children.Add(_label);
             _label.FadeTo(1);
         }
 
