@@ -25,7 +25,7 @@ namespace tinyrowgame.Controls
             this._cellpos = cellpos;
             _label.Text = cellpos.Value.ToString();
             BackgroundColor = DEFAULT_COLORS[cellpos.Value];
-            _label.Opacity = 0;
+            _label.Opacity = 1;
 
         }
 

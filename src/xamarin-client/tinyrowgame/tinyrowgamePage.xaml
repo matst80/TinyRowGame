@@ -10,6 +10,6 @@
     <Grid>
         <views:SKCanvasView x:Name="canvas" PaintSurface="OnCanvasPaint" />
         <control:GridControl />
-        <Label Text="{Binding Status}" IsEnabled="false" />
+        <Label Text="{Binding Status}" IsEnabled="false" HorizontalOptions="Center" />
     </Grid>
 </ContentPage>
